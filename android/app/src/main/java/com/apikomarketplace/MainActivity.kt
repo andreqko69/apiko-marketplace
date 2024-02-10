@@ -1,5 +1,6 @@
 package com.apikomarketplace
 
+import android.os.Bundle;
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
@@ -19,4 +20,13 @@ class MainActivity : ReactActivity() {
    */
   override fun createReactActivityDelegate(): ReactActivityDelegate =
       DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled)
+
+  /**
+   * We need to override the [onCreate] method to pass null to the super method. This is because
+   * the [ReactActivity] class expects a [Bundle] to be passed to the super method, but we don't
+   * want to do that.
+   */
+  override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(null)
+  }
 }
