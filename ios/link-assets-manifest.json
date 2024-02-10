@@ -12,6 +12,10 @@
     {
       "path": "assets/fonts/Lato-Regular.ttf",
       "sha1": "e923c72eda5e50a87e18ff5c71e9ef4b3b6455a3"
+    },
+    {
+      "path": "assets/fonts/icomoon.ttf",
+      "sha1": "9fb6252ce5de9839c29097eaea7a32306c3ea738"
     }
   ]
 }

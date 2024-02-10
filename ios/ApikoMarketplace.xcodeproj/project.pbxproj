@@ -16,6 +16,7 @@
 		7699B88040F8A987B510C191 /* libPods-ApikoMarketplace-ApikoMarketplaceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-ApikoMarketplace-ApikoMarketplaceTests.a */; };
 		A6211BE289264FDAB21A87C7 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE1145A53DAD4E09837EDB5C /* Lato-Black.ttf */; };
 		B7F6AF612B77C03B005045CD /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F6AF602B77C03B005045CD /* BootSplash.storyboard */; };
+		BAD178BB1BCD4100A3724830 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACFC39010BCC4740A871F775 /* icomoon.ttf */; };
 		DF865722CA9D46C484FCDFE6 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E41C6FE46F774F2D901157BD /* Lato-Regular.ttf */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-ApikoMarketplace.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ApikoMarketplace.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-ApikoMarketplace-ApikoMarketplaceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApikoMarketplace-ApikoMarketplaceTests.release.xcconfig"; path = "Target Support Files/Pods-ApikoMarketplace-ApikoMarketplaceTests/Pods-ApikoMarketplace-ApikoMarketplaceTests.release.xcconfig"; sourceTree = "<group>"; };
 		8EA22847DB9A47C1B99B1C06 /* Lato-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Bold.ttf"; path = "../assets/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; };
+		ACFC39010BCC4740A871F775 /* icomoon.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = icomoon.ttf; path = ../assets/fonts/icomoon.ttf; sourceTree = "<group>"; };
 		B7F6AF602B77C03B005045CD /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = ApikoMarketplace/BootSplash.storyboard; sourceTree = "<group>"; };
 		CE1145A53DAD4E09837EDB5C /* Lato-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Black.ttf"; path = "../assets/fonts/Lato-Black.ttf"; sourceTree = "<group>"; };
 		E41C6FE46F774F2D901157BD /* Lato-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Regular.ttf"; path = "../assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				CE1145A53DAD4E09837EDB5C /* Lato-Black.ttf */,
 				8EA22847DB9A47C1B99B1C06 /* Lato-Bold.ttf */,
 				E41C6FE46F774F2D901157BD /* Lato-Regular.ttf */,
+				ACFC39010BCC4740A871F775 /* icomoon.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -264,6 +267,7 @@
 				A6211BE289264FDAB21A87C7 /* Lato-Black.ttf in Resources */,
 				425B4A801F1546A88B3EDBF2 /* Lato-Bold.ttf in Resources */,
 				DF865722CA9D46C484FCDFE6 /* Lato-Regular.ttf in Resources */,
+				BAD178BB1BCD4100A3724830 /* icomoon.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
