@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import AuthNavigator from './AuthNavigator/AuthNavigator';
 import AppNavigator from './AppNavigator/AppNavigator';
-import useStore from '@zustand/useStore.ts';
+import useStore from '@stores/useStore.ts';
 import { ScreenName } from './screens';
 
 const Stack = createStackNavigator();

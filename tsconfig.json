@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "*": ["src/*"],
-      "@zustand/*": ["src/zustand/*"],
+      "@stores/*": ["src/stores/*"],
       "@components/*": ["src/components/*"],
       "@constants/*": ["src/constants/*"],
       "@navigation/*": ["src/navigation/*"],
