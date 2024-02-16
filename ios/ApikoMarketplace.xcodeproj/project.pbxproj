@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* ApikoMarketplaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ApikoMarketplaceTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-ApikoMarketplace.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-ApikoMarketplace.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		425B4A801F1546A88B3EDBF2 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA22847DB9A47C1B99B1C06 /* Lato-Bold.ttf */; };
-		7699B88040F8A987B510C191 /* libPods-ApikoMarketplace-ApikoMarketplaceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-ApikoMarketplace-ApikoMarketplaceTests.a */; };
+		A1CA757A485766E38DE95855 /* libPods-ApikoMarketplace-ApikoMarketplaceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5817A02FD4F93E43629C81A9 /* libPods-ApikoMarketplace-ApikoMarketplaceTests.a */; };
 		A6211BE289264FDAB21A87C7 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE1145A53DAD4E09837EDB5C /* Lato-Black.ttf */; };
 		B7F6AF612B77C03B005045CD /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F6AF602B77C03B005045CD /* BootSplash.storyboard */; };
 		BAD178BB1BCD4100A3724830 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACFC39010BCC4740A871F775 /* icomoon.ttf */; };
 		DF865722CA9D46C484FCDFE6 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E41C6FE46F774F2D901157BD /* Lato-Regular.ttf */; };
+		F7649A3384905A6388D0C155 /* libPods-ApikoMarketplace.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD2FFC57D08845095DBCBB1 /* libPods-ApikoMarketplace.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,17 +40,21 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ApikoMarketplace/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ApikoMarketplace/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ApikoMarketplace/main.m; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-ApikoMarketplace-ApikoMarketplaceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ApikoMarketplace-ApikoMarketplaceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		16419C0FE796219FB6CEFD30 /* Pods-ApikoMarketplaceCommonPods-ApikoMarketplace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApikoMarketplaceCommonPods-ApikoMarketplace.release.xcconfig"; path = "Target Support Files/Pods-ApikoMarketplaceCommonPods-ApikoMarketplace/Pods-ApikoMarketplaceCommonPods-ApikoMarketplace.release.xcconfig"; sourceTree = "<group>"; };
+		2F0100411338E7CF77F7ED11 /* Pods-ApikoMarketplaceCommonPods-ApikoMarketplaceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApikoMarketplaceCommonPods-ApikoMarketplaceTests.release.xcconfig"; path = "Target Support Files/Pods-ApikoMarketplaceCommonPods-ApikoMarketplaceTests/Pods-ApikoMarketplaceCommonPods-ApikoMarketplaceTests.release.xcconfig"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-ApikoMarketplace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApikoMarketplace.debug.xcconfig"; path = "Target Support Files/Pods-ApikoMarketplace/Pods-ApikoMarketplace.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-ApikoMarketplace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApikoMarketplace.release.xcconfig"; path = "Target Support Files/Pods-ApikoMarketplace/Pods-ApikoMarketplace.release.xcconfig"; sourceTree = "<group>"; };
+		5817A02FD4F93E43629C81A9 /* libPods-ApikoMarketplace-ApikoMarketplaceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ApikoMarketplace-ApikoMarketplaceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B7EB9410499542E8C5724F5 /* Pods-ApikoMarketplace-ApikoMarketplaceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApikoMarketplace-ApikoMarketplaceTests.debug.xcconfig"; path = "Target Support Files/Pods-ApikoMarketplace-ApikoMarketplaceTests/Pods-ApikoMarketplace-ApikoMarketplaceTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-ApikoMarketplace.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ApikoMarketplace.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-ApikoMarketplace-ApikoMarketplaceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApikoMarketplace-ApikoMarketplaceTests.release.xcconfig"; path = "Target Support Files/Pods-ApikoMarketplace-ApikoMarketplaceTests/Pods-ApikoMarketplace-ApikoMarketplaceTests.release.xcconfig"; sourceTree = "<group>"; };
-		8EA22847DB9A47C1B99B1C06 /* Lato-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Bold.ttf"; path = "../assets/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; };
-		ACFC39010BCC4740A871F775 /* icomoon.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = icomoon.ttf; path = ../assets/fonts/icomoon.ttf; sourceTree = "<group>"; };
+		8CE207889983538314EB0765 /* Pods-ApikoMarketplaceCommonPods-ApikoMarketplaceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApikoMarketplaceCommonPods-ApikoMarketplaceTests.debug.xcconfig"; path = "Target Support Files/Pods-ApikoMarketplaceCommonPods-ApikoMarketplaceTests/Pods-ApikoMarketplaceCommonPods-ApikoMarketplaceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8EA22847DB9A47C1B99B1C06 /* Lato-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Bold.ttf"; path = "../assets/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; };
+		ACFC39010BCC4740A871F775 /* icomoon.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = icomoon.ttf; path = ../assets/fonts/icomoon.ttf; sourceTree = "<group>"; };
+		B0AC1AB7C0E78380DE44D21E /* Pods-ApikoMarketplaceCommonPods-ApikoMarketplace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApikoMarketplaceCommonPods-ApikoMarketplace.debug.xcconfig"; path = "Target Support Files/Pods-ApikoMarketplaceCommonPods-ApikoMarketplace/Pods-ApikoMarketplaceCommonPods-ApikoMarketplace.debug.xcconfig"; sourceTree = "<group>"; };
 		B7F6AF602B77C03B005045CD /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = ApikoMarketplace/BootSplash.storyboard; sourceTree = "<group>"; };
-		CE1145A53DAD4E09837EDB5C /* Lato-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Black.ttf"; path = "../assets/fonts/Lato-Black.ttf"; sourceTree = "<group>"; };
-		E41C6FE46F774F2D901157BD /* Lato-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Regular.ttf"; path = "../assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
+		BFD2FFC57D08845095DBCBB1 /* libPods-ApikoMarketplace.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ApikoMarketplace.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE1145A53DAD4E09837EDB5C /* Lato-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Black.ttf"; path = "../assets/fonts/Lato-Black.ttf"; sourceTree = "<group>"; };
+		E41C6FE46F774F2D901157BD /* Lato-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Regular.ttf"; path = "../assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -59,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-ApikoMarketplace-ApikoMarketplaceTests.a in Frameworks */,
+				A1CA757A485766E38DE95855 /* libPods-ApikoMarketplace-ApikoMarketplaceTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-ApikoMarketplace.a in Frameworks */,
+				F7649A3384905A6388D0C155 /* libPods-ApikoMarketplace.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,8 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-ApikoMarketplace.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-ApikoMarketplace-ApikoMarketplaceTests.a */,
+				BFD2FFC57D08845095DBCBB1 /* libPods-ApikoMarketplace.a */,
+				5817A02FD4F93E43629C81A9 /* libPods-ApikoMarketplace-ApikoMarketplaceTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -155,7 +159,6 @@
 				ACFC39010BCC4740A871F775 /* icomoon.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
@@ -165,6 +168,10 @@
 				5709B34CF0A7D63546082F79 /* Pods-ApikoMarketplace.release.xcconfig */,
 				5B7EB9410499542E8C5724F5 /* Pods-ApikoMarketplace-ApikoMarketplaceTests.debug.xcconfig */,
 				89C6BE57DB24E9ADA2F236DE /* Pods-ApikoMarketplace-ApikoMarketplaceTests.release.xcconfig */,
+				B0AC1AB7C0E78380DE44D21E /* Pods-ApikoMarketplaceCommonPods-ApikoMarketplace.debug.xcconfig */,
+				16419C0FE796219FB6CEFD30 /* Pods-ApikoMarketplaceCommonPods-ApikoMarketplace.release.xcconfig */,
+				8CE207889983538314EB0765 /* Pods-ApikoMarketplaceCommonPods-ApikoMarketplaceTests.debug.xcconfig */,
+				2F0100411338E7CF77F7ED11 /* Pods-ApikoMarketplaceCommonPods-ApikoMarketplaceTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -491,22 +498,27 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F88QCN7A5U;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ApikoMarketplace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apikomarketplace;
 				PRODUCT_NAME = ApikoMarketplace;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -518,20 +530,25 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F88QCN7A5U;
 				INFOPLIST_FILE = ApikoMarketplace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apikomarketplace;
 				PRODUCT_NAME = ApikoMarketplace;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

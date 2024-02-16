@@ -64,3 +64,9 @@ yarn-error.log
 
 # testing
 /coverage
+
+# env file
+.env.development
+.env.staging
+.env.production
+/ios/tmp.xcconfig
