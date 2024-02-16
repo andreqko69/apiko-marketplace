@@ -39,6 +39,8 @@ target 'ApikoMarketplace' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'react-native-config/Extension', :path => '../node_modules/react-native-config'
+
   target 'ApikoMarketplaceTests' do
     inherit! :complete
     # Pods for testing
