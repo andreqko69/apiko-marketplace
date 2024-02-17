@@ -3,6 +3,5 @@ import 'react-native-gesture-handler';
 
 import App from './App';
 import { name as appName } from './app.json';
-import './src/styles/unistyles';
 
 AppRegistry.registerComponent(appName, () => App);

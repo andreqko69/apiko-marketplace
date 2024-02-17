@@ -14,6 +14,8 @@ module.exports = {
           '.ts',
           '.tsx',
           '.json',
+          '.png',
+          '.jpeg',
         ],
         alias: {
           '@components': './src/components',
@@ -22,6 +24,8 @@ module.exports = {
           '@screens': './src/screens',
           '@stores': './src/stores',
           '@styles': './src/styles',
+          '@utils': './src/utils',
+          '@assets': './src/assets',
         },
       },
     ],

@@ -4,6 +4,9 @@ const baseTheme = {
     md: 16,
     lg: 32,
   },
+  borderWidth: {
+    sm: 2,
+  },
   fontSize: {
     xxsm: 10,
     xsm: 12,
@@ -23,6 +26,18 @@ const baseTheme = {
     xlg: 28,
     xxlg: 32,
     xxxlg: 36,
+  },
+  spaces: {
+    xxsm: 4,
+    xsm: 8,
+    sm: 12,
+    md: 16,
+    lg: 20,
+    xlg: 24,
+    xxlg: 28,
+    xxxlg: 32,
+    xxxxlg: 36,
+    xxxxxlg: 40,
   },
   fontFamily: {
     regular: 'Lato-Regular',

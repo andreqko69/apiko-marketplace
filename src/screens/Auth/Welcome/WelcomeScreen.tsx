@@ -1,25 +1,64 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { ImageBackground, Text, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 
-import fontStyleSheet from '@styles/fonts.ts';
-import Icon from '@components/Icon/Icon';
-import Config from 'react-native-config';
-import { isAndroid } from 'utils/reactNative.ts';
+import stylesheet from '@screens/Auth/Welcome/WelcomeScreen.styles';
+import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
+import {
+  ButtonSize,
+  ButtonVariation,
+} from '@components/ButtonPrimary/constants.ts';
+import WelcomeImage from '@assets/images/welcome.jpeg';
+import ButtonLink from 'components/ButtonLink/ButtonLink.tsx';
 
 const WelcomeScreen = () => {
-  const { styles } = useStyles(fontStyleSheet);
-  const isFrom = Config.APP_CONFIG ?? '';
-  console.log('Config:', Config);
-  console.log('isAndroid:', isAndroid);
-  console.log('isFrom:', isFrom);
+  const { styles } = useStyles(stylesheet);
+
   return (
-    <SafeAreaView>
-      <Text style={styles.textXxsmRegular}>Welcome</Text>
-      <Icon name="power" />
-      <Text style={styles.textXxsmExtrabold}>Welcome Boldie</Text>
-      <Text>Env: {isFrom}</Text>
+    <SafeAreaView style={styles.container}>
+      <ImageBackground
+        imageStyle={{ resizeMode: 'cover' }}
+        source={WelcomeImage}
+        style={styles.imageBackground}>
+        <LinearGradient
+          colors={['#00000000', '#1c1717']}
+          locations={[0, 0.75]}
+          style={styles.linearGradient}>
+          <View style={styles.contentWrapper}>
+            <Text style={styles.title}>Hey! Welcome</Text>
+            <Text style={styles.text}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
+              turpis molestie, dictum est a, mattis tellus. Sed dignissim
+            </Text>
+            <View style={styles.buttonContainer}>
+              <ButtonPrimary
+                onPress={() => {
+                  console.log('Sign in!');
+                }}
+                variation={ButtonVariation.Secondary}
+                size={ButtonSize.Large}
+                text="Sign in"
+              />
+              <ButtonPrimary
+                onPress={() => {
+                  console.log('Create account!');
+                }}
+                variation={ButtonVariation.Primary}
+                size={ButtonSize.Large}
+                text="Create account"
+              />
+              <ButtonLink
+                onPress={() => {
+                  console.log('You are guest!');
+                }}
+                text="Continue as a guest"
+              />
+            </View>
+          </View>
+        </LinearGradient>
+      </ImageBackground>
     </SafeAreaView>
   );
 };
