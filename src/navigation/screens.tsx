@@ -1,7 +1,7 @@
 export enum ScreenName {
   Welcome = 'Welcome',
-  Login = 'Login',
-  Signup = 'Signup',
+  SignIn = 'Sign in',
+  SignUp = 'Sign up',
   App = 'App',
   Home = 'Home',
   Search = 'Search',

@@ -3,18 +3,33 @@ import { ImageBackground, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
+import { useNavigation } from '@react-navigation/native';
+import type { StackNavigationProp } from '@react-navigation/stack';
+import type { AuthStackParamList } from '@navigation/AuthNavigator/AuthNavigator.types';
 
 import stylesheet from '@screens/Auth/Welcome/WelcomeScreen.styles';
 import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
 import {
   ButtonSize,
   ButtonVariation,
-} from '@components/ButtonPrimary/constants.ts';
+} from '@components/ButtonPrimary/constants';
 import WelcomeImage from '@assets/images/welcome.jpeg';
-import ButtonLink from 'components/ButtonLink/ButtonLink.tsx';
+import ButtonLink from '@components/ButtonLink/ButtonLink';
+import { ScreenName } from '@navigation/screens';
+
+type Props = StackNavigationProp<AuthStackParamList, ScreenName.SignIn>;
 
 const WelcomeScreen = () => {
   const { styles } = useStyles(stylesheet);
+  const { navigate } = useNavigation<Props>();
+
+  const handleSignIn = () => {
+    navigate(ScreenName.SignIn);
+  };
+
+  const handleCreateAccount = () => {
+    navigate(ScreenName.SignUp);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -34,17 +49,13 @@ const WelcomeScreen = () => {
             </Text>
             <View style={styles.buttonContainer}>
               <ButtonPrimary
-                onPress={() => {
-                  console.log('Sign in!');
-                }}
+                onPress={handleSignIn}
                 variation={ButtonVariation.Secondary}
                 size={ButtonSize.Large}
                 text="Sign in"
               />
               <ButtonPrimary
-                onPress={() => {
-                  console.log('Create account!');
-                }}
+                onPress={handleCreateAccount}
                 variation={ButtonVariation.Primary}
                 size={ButtonSize.Large}
                 text="Create account"

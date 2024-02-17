@@ -2,16 +2,22 @@ import React, { useState } from 'react';
 import { ActivityIndicator, Text } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import stylesheet from 'components/ButtonLink/ButtonLink.styles.ts';
+import stylesheet from 'components/ButtonLink/ButtonLink.styles';
+import { ButtonVariation } from '../ButtonPrimary/constants';
 
 interface ButtonProps {
   onPress: () => void | Promise<void>;
   text: string;
+  variation?: ButtonVariation;
 }
 
-const ButtonLink = ({ onPress, text }: ButtonProps) => {
+const ButtonLink = ({
+  onPress,
+  text,
+  variation = ButtonVariation.Primary,
+}: ButtonProps) => {
   const [isLoading, setIsLoading] = useState(false);
-  const { styles } = useStyles(stylesheet);
+  const { styles } = useStyles(stylesheet, { styleVariation: variation });
 
   const handlePress = async () => {
     try {

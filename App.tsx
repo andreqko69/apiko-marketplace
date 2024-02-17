@@ -1,6 +1,7 @@
 import React from 'react';
-import RootNavigator from './src/navigation';
-import './src/styles/unistyles';
+
+import RootNavigator from '@navigation/index';
+import '@styles/unistyles';
 
 function App(): React.JSX.Element {
   return <RootNavigator />;

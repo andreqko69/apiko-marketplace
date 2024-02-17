@@ -5,7 +5,13 @@ const baseTheme = {
     lg: 32,
   },
   borderWidth: {
-    sm: 2,
+    sm: 1,
+    md: 2,
+  },
+  iconSize: {
+    sm: 16,
+    md: 24,
+    lg: 32,
   },
   fontSize: {
     xxsm: 10,

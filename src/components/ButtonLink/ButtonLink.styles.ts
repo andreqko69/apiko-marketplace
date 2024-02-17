@@ -8,8 +8,6 @@ const stylesheet = createStyleSheet((theme) => ({
     fontFamily: theme.fontFamily.bold,
     fontSize: theme.fontSize.md,
     lineHeight: theme.lineHeight.md,
-    textAlign: 'center',
-    justifyContent: 'center',
     color: theme.palette.button.typography.secondary,
   },
   loader: {

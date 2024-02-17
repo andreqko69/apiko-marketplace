@@ -15,7 +15,7 @@ const stylesheet = createStyleSheet((theme) => ({
         },
         [ButtonVariation.Secondary]: {
           backgroundColor: theme.palette.button.background.secondary,
-          borderWidth: theme.borderWidth.sm,
+          borderWidth: theme.borderWidth.md,
           borderColor: theme.palette.button.borderColor.primary,
         },
       },

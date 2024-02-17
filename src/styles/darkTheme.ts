@@ -1,5 +1,5 @@
 import baseTheme from 'styles/baseTheme';
-import colors from 'styles/colors.ts';
+import colors from 'styles/colors';
 
 const darkTheme = {
   ...baseTheme,
@@ -33,6 +33,23 @@ const darkTheme = {
       loaderColor: {
         primary: colors.white,
         secondary: colors.mainRed,
+      },
+    },
+    background: {
+      primary: colors.lightGrey1,
+    },
+    icon: {
+      color: {
+        navigation: colors.black,
+      },
+    },
+    input: {
+      color: {
+        primary: colors.black,
+        placeholder: colors.darkGrey1,
+      },
+      borderColor: {
+        primary: colors.lightGrey2,
       },
     },
   },
