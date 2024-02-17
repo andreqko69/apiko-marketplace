@@ -47,9 +47,11 @@ const darkTheme = {
       color: {
         primary: colors.black,
         placeholder: colors.darkGrey1,
+        error: colors.error,
       },
       borderColor: {
         primary: colors.lightGrey2,
+        error: colors.error,
       },
     },
   },

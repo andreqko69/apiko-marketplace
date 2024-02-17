@@ -33,10 +33,7 @@ const WelcomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ImageBackground
-        imageStyle={{ resizeMode: 'cover' }}
-        source={WelcomeImage}
-        style={styles.imageBackground}>
+      <ImageBackground source={WelcomeImage} style={styles.imageBackground}>
         <LinearGradient
           colors={['#00000000', '#1c1717']}
           locations={[0, 0.75]}
@@ -60,6 +57,8 @@ const WelcomeScreen = () => {
                 size={ButtonSize.Large}
                 text="Create account"
               />
+            </View>
+            <View style={styles.guestContainer}>
               <ButtonLink
                 onPress={() => {
                   console.log('You are guest!');

@@ -12,7 +12,10 @@ const stylesheet = createStyleSheet((theme) => ({
     shadowColor: 'transparent',
   },
   headerLeft: {
-    paddingHorizontal: theme.spaces.md,
+    paddingLeft: theme.spaces.md,
+  },
+  headerRight: {
+    paddingRight: theme.spaces.md,
   },
 }));
 

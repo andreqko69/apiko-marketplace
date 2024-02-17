@@ -1,9 +1,10 @@
 import React from 'react';
 import { useStyles } from 'react-native-unistyles';
+import type { HeaderBackButtonProps } from '@react-navigation/elements';
 
 import Icon, { IconName } from '../Icon/Icon';
 
-const HeaderLeft = ({ onPress }: { onPress: () => void }) => {
+const HeaderLeft = ({ onPress }: HeaderBackButtonProps) => {
   const { theme } = useStyles();
 
   return (

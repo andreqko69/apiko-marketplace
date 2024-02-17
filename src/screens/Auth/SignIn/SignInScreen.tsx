@@ -49,7 +49,7 @@ const SignInScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['bottom']}>
       <View>
         <View style={styles.inputContainer}>
           <InputText
@@ -73,7 +73,7 @@ const SignInScreen = () => {
           size={ButtonSize.Large}
         />
         <View style={styles.registerNowContainer}>
-          <Text style={styles.registerNowText}>Not a member?</Text>
+          <Text style={styles.registerNowText}>Not a member? </Text>
           <ButtonLink onPress={handleRegisterNow} text="Register now" />
         </View>
       </View>

@@ -13,14 +13,14 @@ const stylesheet = createStyleSheet((theme) => ({
   forgotPasswordContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginVertical: theme.spaces.lg,
+    marginTop: theme.spaces.md,
+    marginBottom: theme.spaces.xlg,
   },
   registerNowContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: theme.spaces.md,
-    gap: theme.spaces.xxsm,
   },
   registerNowText: {
     fontFamily: theme.fontFamily.bold,

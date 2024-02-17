@@ -23,6 +23,7 @@ const AuthNavigator = () => {
         headerStyle: styles.header,
         headerTitleAlign: 'center',
         headerLeftContainerStyle: styles.headerLeft,
+        headerRightContainerStyle: styles.headerRight,
         headerLeft: HeaderLeft,
       }}>
       <Stack.Screen

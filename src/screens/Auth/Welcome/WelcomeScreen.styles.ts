@@ -35,12 +35,17 @@ const stylesheet = createStyleSheet((theme) => {
       lineHeight: theme.lineHeight.sm,
       maxWidth: 300,
       textAlign: 'center',
-      marginTop: theme.spaces.sm,
+      marginTop: theme.spaces.xsm,
       marginBottom: theme.spaces.md,
     },
     buttonContainer: {
       width: '100%',
-      gap: theme.spaces.sm,
+      gap: theme.spaces.xsm,
+    },
+    guestContainer: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      marginTop: theme.spaces.md,
     },
   };
 });
