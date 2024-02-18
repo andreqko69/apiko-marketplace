@@ -1,15 +1,13 @@
 export enum ScreenName {
   Welcome = 'Welcome',
   SignIn = 'Sign in',
-  SignUp = 'Sign up',
+  SignUp = 'Create account',
+  ResetPassword = 'Reset password',
+  CreateNewPassword = 'Create new password',
   App = 'App',
   Home = 'Home',
-  Search = 'Search',
-  Library = 'Library',
   AuthNavigator = 'AuthNavigator',
   AppNavigator = 'AppNavigator',
   TabNavigator = 'TabNavigator',
   HomeNavigator = 'HomeNavigator',
-  LibraryNavigator = 'LibraryNavigator',
-  SearchNavigator = 'SearchNavigator',
 }

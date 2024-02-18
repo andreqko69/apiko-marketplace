@@ -1,17 +1,17 @@
 import React from 'react';
 import BootSplash from 'react-native-bootsplash';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-import AuthNavigator from '@navigation/AuthNavigator/AuthNavigator';
-import AppNavigator from '@navigation/AppNavigator/AppNavigator';
 import useStore from '@stores/useStore';
-import { ScreenName } from '@navigation/screens';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import AuthNavigator from './AuthNavigator/AuthNavigator';
+import AppNavigator from './AppNavigator/AppNavigator';
+import { ScreenName } from './screens';
 
 const Stack = createStackNavigator();
 
-const RootNavigator = () => {
+const Index = () => {
   const store = useStore();
   const isAuthenticated = store.use.isAuthenticated();
 
@@ -44,4 +44,4 @@ const RootNavigator = () => {
   );
 };
 
-export default RootNavigator;
+export default Index;

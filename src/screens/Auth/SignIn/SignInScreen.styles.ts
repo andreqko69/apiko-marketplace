@@ -5,6 +5,7 @@ const stylesheet = createStyleSheet((theme) => ({
     flex: 1,
     backgroundColor: theme.palette.background.primary,
     paddingHorizontal: theme.spaces.md,
+    paddingTop: theme.spaces.xsm,
     justifyContent: 'space-between',
   },
   contentContainer: {

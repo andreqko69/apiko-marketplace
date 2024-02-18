@@ -9,6 +9,8 @@ import HeaderLeft from '@components/HeaderLeft/HeaderLeft';
 import stylesheet from './AuthNavigator.styles';
 import { ScreenName } from '../screens';
 import { AuthStackParamList } from './AuthNavigator.types';
+import ResetPasswordScreen from '@screens/Auth/ResetPassword/ResetPasswordScreen';
+import CreateNewPasswordScreen from '@screens/Auth/CreateNewPassword/CreateNewPasswordScreen';
 
 const Stack = createStackNavigator<AuthStackParamList>();
 
@@ -38,10 +40,14 @@ const AuthNavigator = () => {
         name={ScreenName.SignIn}
         component={SignInScreen}
       />
+      <Stack.Screen name={ScreenName.SignUp} component={SignupScreen} />
       <Stack.Screen
-        options={{ headerShown: true }}
-        name={ScreenName.SignUp}
-        component={SignupScreen}
+        name={ScreenName.ResetPassword}
+        component={ResetPasswordScreen}
+      />
+      <Stack.Screen
+        name={ScreenName.CreateNewPassword}
+        component={CreateNewPasswordScreen}
       />
     </Stack.Navigator>
   );

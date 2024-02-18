@@ -13,9 +13,19 @@ import { InputType } from '@components/InputText/constants';
 import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
 import CustomKeyboardAvoidingView from '@components/CustomKeyboardAvoidingView/CustomKeyboardAvoidingView';
 import { IconName } from '@components/Icon/Icon';
+import { useNavigation } from '@react-navigation/native';
+import { ScreenName } from '@navigation/screens';
+import type { StackNavigationProp } from '@react-navigation/stack';
+import type { AuthStackParamList } from '@navigation/AuthNavigator/AuthNavigator.types';
 import stylesheet from './SignInScreen.styles';
 
+type NavigationProps = StackNavigationProp<
+  AuthStackParamList,
+  ScreenName.SignIn
+>;
+
 const SignInScreen = () => {
+  const { navigate } = useNavigation<NavigationProps>();
   const { styles } = useStyles(stylesheet);
   const [passwordInputType, setPasswordInputType] = useState(
     InputType.Password
@@ -48,12 +58,12 @@ const SignInScreen = () => {
     );
   };
 
-  const handleForgotPassword = () => {
-    console.log('Forgot password');
+  const handleForgotPasswordPress = () => {
+    navigate(ScreenName.ResetPassword);
   };
 
-  const handleRegisterNow = () => {
-    console.log('Forgot password');
+  const handleRegisterNowPress = () => {
+    navigate(ScreenName.SignUp);
   };
 
   const handleContinueAsGuest = () => {
@@ -84,7 +94,10 @@ const SignInScreen = () => {
             />
           </View>
           <View style={styles.forgotPasswordContainer}>
-            <ButtonLink onPress={handleForgotPassword} text="Forgot password" />
+            <ButtonLink
+              onPress={handleForgotPasswordPress}
+              text="Forgot password"
+            />
           </View>
           <ButtonPrimary
             onPress={handleSignIn}
@@ -94,7 +107,7 @@ const SignInScreen = () => {
           />
           <View style={styles.registerNowContainer}>
             <Text style={styles.registerNowText}>Not a member? </Text>
-            <ButtonLink onPress={handleRegisterNow} text="Register now" />
+            <ButtonLink onPress={handleRegisterNowPress} text="Register now" />
           </View>
         </View>
         <View style={styles.guestContainer}>

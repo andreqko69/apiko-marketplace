@@ -8,16 +8,11 @@ import { ButtonVariation } from '../ButtonPrimary/constants';
 interface ButtonProps {
   onPress: () => void | Promise<void>;
   text: string;
-  variation?: ButtonVariation;
 }
 
-const ButtonLink = ({
-  onPress,
-  text,
-  variation = ButtonVariation.Primary,
-}: ButtonProps) => {
+const ButtonLink = ({ onPress, text }: ButtonProps) => {
   const [isLoading, setIsLoading] = useState(false);
-  const { styles } = useStyles(stylesheet, { styleVariation: variation });
+  const { styles } = useStyles(stylesheet);
 
   const handlePress = async () => {
     try {

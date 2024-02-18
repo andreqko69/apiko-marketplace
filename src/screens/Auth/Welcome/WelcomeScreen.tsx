@@ -17,11 +17,14 @@ import WelcomeImage from '@assets/images/welcome.jpeg';
 import ButtonLink from '@components/ButtonLink/ButtonLink';
 import { ScreenName } from '@navigation/screens';
 
-type Props = StackNavigationProp<AuthStackParamList, ScreenName.SignIn>;
+type NavigationProps = StackNavigationProp<
+  AuthStackParamList,
+  ScreenName.Welcome
+>;
 
 const WelcomeScreen = () => {
   const { styles } = useStyles(stylesheet);
-  const { navigate } = useNavigation<Props>();
+  const { navigate } = useNavigation<NavigationProps>();
 
   const handleSignIn = () => {
     navigate(ScreenName.SignIn);
