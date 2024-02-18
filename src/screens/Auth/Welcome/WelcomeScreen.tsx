@@ -5,7 +5,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 import { useNavigation } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
-import type { AuthStackParamList } from '@navigation/AuthNavigator/AuthNavigator.types';
 
 import stylesheet from '@screens/Auth/Welcome/WelcomeScreen.styles';
 import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
@@ -16,6 +15,7 @@ import {
 import WelcomeImage from '@assets/images/welcome.jpeg';
 import ButtonLink from '@components/ButtonLink/ButtonLink';
 import { ScreenName } from '@navigation/screens';
+import type { AuthStackParamList } from '@navigation/AuthNavigator/AuthNavigator.types';
 
 type NavigationProps = StackNavigationProp<
   AuthStackParamList,

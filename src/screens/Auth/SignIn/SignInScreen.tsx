@@ -2,6 +2,8 @@ import React, { useCallback, useState } from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
+import { useNavigation } from '@react-navigation/native';
+import type { StackNavigationProp } from '@react-navigation/stack';
 
 import {
   ButtonSize,
@@ -13,9 +15,7 @@ import { InputType } from '@components/InputText/constants';
 import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
 import CustomKeyboardAvoidingView from '@components/CustomKeyboardAvoidingView/CustomKeyboardAvoidingView';
 import { IconName } from '@components/Icon/Icon';
-import { useNavigation } from '@react-navigation/native';
 import { ScreenName } from '@navigation/screens';
-import type { StackNavigationProp } from '@react-navigation/stack';
 import type { AuthStackParamList } from '@navigation/AuthNavigator/AuthNavigator.types';
 import stylesheet from './SignInScreen.styles';
 

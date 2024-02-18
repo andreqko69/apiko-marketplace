@@ -2,15 +2,15 @@ import React, { useCallback, useState } from 'react';
 import { Text, View } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
+import type { StackNavigationProp } from '@react-navigation/stack';
 
 import InputText from '@components/InputText/InputText';
 import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
 import { InputType } from '@components/InputText/constants';
-import stylesheet from './ResetPasswordScreen.styles';
-import { useNavigation } from '@react-navigation/native';
-import type { StackNavigationProp } from '@react-navigation/stack';
 import type { AuthStackParamList } from '@navigation/AuthNavigator/AuthNavigator.types';
 import { ScreenName } from '@navigation/screens';
+import stylesheet from './ResetPasswordScreen.styles';
 
 type NavigationProps = StackNavigationProp<
   AuthStackParamList,

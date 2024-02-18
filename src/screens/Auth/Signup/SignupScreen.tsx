@@ -64,15 +64,25 @@ const SignupScreen = () => {
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <View style={styles.inputContainer}>
         <InputText
+          value={inputState.firstName}
           placeholder="First name"
           onTextChange={handleFirstNameChange}
         />
         <InputText
+          value={inputState.lastName}
           placeholder="Last name"
           onTextChange={handleLastNameChange}
         />
-        <InputText placeholder="Email" onTextChange={handleEmailChange} />
-        <InputText placeholder="Location" onTextChange={handleLocationChange} />
+        <InputText
+          value={inputState.email}
+          placeholder="Email"
+          onTextChange={handleEmailChange}
+        />
+        <InputText
+          value={inputState.location}
+          placeholder="Location"
+          onTextChange={handleLocationChange}
+        />
       </View>
       <ButtonPrimary
         onPress={handleSignUpPress}
