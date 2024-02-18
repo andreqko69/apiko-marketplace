@@ -66,6 +66,7 @@ const SignInScreen = () => {
               value={inputState.password}
               onTextChange={handlePasswordChange}
               type={InputType.Password}
+              errorMessage="Password is incorrect"
             />
           </View>
           <View style={styles.forgotPasswordContainer}>

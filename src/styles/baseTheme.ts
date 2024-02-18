@@ -34,6 +34,7 @@ const baseTheme = {
     xxxlg: 36,
   },
   spaces: {
+    xxxsm: 2,
     xxsm: 4,
     xsm: 8,
     sm: 12,

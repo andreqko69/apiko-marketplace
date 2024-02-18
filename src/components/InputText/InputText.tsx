@@ -31,15 +31,17 @@ const InputText = ({
 
   return (
     <View>
-      <TextInput
-        placeholderTextColor={theme.palette.input.color.placeholder}
-        style={styles.input}
-        value={value}
-        placeholder={placeholder}
-        onChangeText={handleTextChange}
-        {...typeProps}
-      />
-      {errorMessage?.length && (
+      <View style={styles.container}>
+        <TextInput
+          placeholderTextColor={theme.palette.input.color.placeholder}
+          style={styles.input}
+          value={value}
+          placeholder={placeholder}
+          onChangeText={handleTextChange}
+          {...typeProps}
+        />
+      </View>
+      {!!errorMessage?.length && (
         <Text style={styles.errorMessage}>{errorMessage}</Text>
       )}
     </View>
