@@ -3,14 +3,14 @@ import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 
-import InputText from '@components/InputText/InputText';
-import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
 import {
   ButtonSize,
   ButtonVariation,
 } from '@components/ButtonPrimary/constants';
+import InputText from '@components/InputText/InputText';
 import ButtonLink from '@components/ButtonLink/ButtonLink';
 import { InputType } from '@components/InputText/constants';
+import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
 import CustomKeyboardAvoidingView from '@components/CustomKeyboardAvoidingView/CustomKeyboardAvoidingView';
 import stylesheet from './SignInScreen.styles';
 
