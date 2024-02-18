@@ -7,6 +7,10 @@ const stylesheet = createStyleSheet((theme) => ({
     paddingHorizontal: theme.spaces.md,
     justifyContent: 'space-between',
   },
+  contentContainer: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
   inputContainer: {
     gap: theme.spaces.xsm,
   },

@@ -8,8 +8,7 @@ const stylesheet = createStyleSheet((theme) => ({
   },
   header: {
     backgroundColor: theme.palette.background.primary,
-    borderBottomWidth: 0,
-    shadowColor: 'transparent',
+    elevation: 0, // remove shadow on Android
   },
   headerLeft: {
     paddingLeft: theme.spaces.md,

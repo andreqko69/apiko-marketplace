@@ -7,6 +7,7 @@ import AuthNavigator from '@navigation/AuthNavigator/AuthNavigator';
 import AppNavigator from '@navigation/AppNavigator/AppNavigator';
 import useStore from '@stores/useStore';
 import { ScreenName } from '@navigation/screens';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const Stack = createStackNavigator();
 
@@ -15,29 +16,31 @@ const RootNavigator = () => {
   const isAuthenticated = store.use.isAuthenticated();
 
   return (
-    <NavigationContainer
-      onReady={() => {
-        setTimeout(() => {
-          BootSplash.hide({ fade: true });
-        }, 2000);
-      }}>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
+    <SafeAreaProvider>
+      <NavigationContainer
+        onReady={() => {
+          setTimeout(() => {
+            BootSplash.hide({ fade: true });
+          }, 2000);
         }}>
-        {isAuthenticated ? (
-          <Stack.Screen
-            name={ScreenName.AppNavigator}
-            component={AppNavigator}
-          />
-        ) : (
-          <Stack.Screen
-            name={ScreenName.AuthNavigator}
-            component={AuthNavigator}
-          />
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}>
+          {isAuthenticated ? (
+            <Stack.Screen
+              name={ScreenName.AppNavigator}
+              component={AppNavigator}
+            />
+          ) : (
+            <Stack.Screen
+              name={ScreenName.AuthNavigator}
+              component={AuthNavigator}
+            />
+          )}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 

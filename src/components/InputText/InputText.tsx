@@ -1,14 +1,18 @@
 import React from 'react';
-import { useStyles } from 'react-native-unistyles';
-import stylesheet from './InputText.styles';
-import { TextInput } from 'react-native-gesture-handler';
 import { Text, View } from 'react-native';
+import { useStyles } from 'react-native-unistyles';
+import { TextInput } from 'react-native-gesture-handler';
+
+import stylesheet from './InputText.styles';
+import { InputType } from './constants';
+import { getInputPropsByType } from './helpers';
 
 interface InputTextProps {
   value?: string;
   placeholder?: string;
   onTextChange: (text: string) => unknown;
   errorMessage?: string;
+  type?: InputType;
 }
 
 const InputText = ({
@@ -16,8 +20,10 @@ const InputText = ({
   value,
   onTextChange,
   errorMessage,
+  type,
 }: InputTextProps) => {
   const { styles, theme } = useStyles(stylesheet, { hasError: !!errorMessage });
+  const typeProps = getInputPropsByType(type);
 
   const handleTextChange = (text: string) => {
     onTextChange(text);
@@ -31,6 +37,7 @@ const InputText = ({
         value={value}
         placeholder={placeholder}
         onChangeText={handleTextChange}
+        {...typeProps}
       />
       {errorMessage?.length && (
         <Text style={styles.errorMessage}>{errorMessage}</Text>

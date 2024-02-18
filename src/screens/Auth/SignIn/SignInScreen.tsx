@@ -4,13 +4,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 
 import InputText from '@components/InputText/InputText';
-import stylesheet from './SignInScreen.styles';
 import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
 import {
   ButtonSize,
   ButtonVariation,
 } from '@components/ButtonPrimary/constants';
 import ButtonLink from '@components/ButtonLink/ButtonLink';
+import { InputType } from '@components/InputText/constants';
+import CustomKeyboardAvoidingView from '@components/CustomKeyboardAvoidingView/CustomKeyboardAvoidingView';
+import stylesheet from './SignInScreen.styles';
 
 const SignInScreen = () => {
   const { styles } = useStyles(stylesheet);
@@ -50,40 +52,44 @@ const SignInScreen = () => {
 
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
-      <View>
-        <View style={styles.inputContainer}>
-          <InputText
-            placeholder="Email"
-            value={inputState.email}
-            onTextChange={handleEmailChange}
+      <CustomKeyboardAvoidingView style={styles.contentContainer}>
+        <View>
+          <View style={styles.inputContainer}>
+            <InputText
+              placeholder="Email"
+              value={inputState.email}
+              onTextChange={handleEmailChange}
+              type={InputType.Email}
+            />
+            <InputText
+              placeholder="Password"
+              value={inputState.password}
+              onTextChange={handlePasswordChange}
+              type={InputType.Password}
+            />
+          </View>
+          <View style={styles.forgotPasswordContainer}>
+            <ButtonLink onPress={handleForgotPassword} text="Forgot password" />
+          </View>
+          <ButtonPrimary
+            onPress={handleSignIn}
+            text="Sign in"
+            variation={ButtonVariation.Primary}
+            size={ButtonSize.Large}
           />
-          <InputText
-            placeholder="Password"
-            value={inputState.password}
-            onTextChange={handlePasswordChange}
+          <View style={styles.registerNowContainer}>
+            <Text style={styles.registerNowText}>Not a member? </Text>
+            <ButtonLink onPress={handleRegisterNow} text="Register now" />
+          </View>
+        </View>
+        <View style={styles.guestContainer}>
+          <ButtonLink
+            onPress={handleContinueAsGuest}
+            text="Continue as a guest"
+            variation={ButtonVariation.Secondary}
           />
         </View>
-        <View style={styles.forgotPasswordContainer}>
-          <ButtonLink onPress={handleForgotPassword} text="Forgot password" />
-        </View>
-        <ButtonPrimary
-          onPress={handleSignIn}
-          text="Sign in"
-          variation={ButtonVariation.Primary}
-          size={ButtonSize.Large}
-        />
-        <View style={styles.registerNowContainer}>
-          <Text style={styles.registerNowText}>Not a member? </Text>
-          <ButtonLink onPress={handleRegisterNow} text="Register now" />
-        </View>
-      </View>
-      <View style={styles.guestContainer}>
-        <ButtonLink
-          onPress={handleContinueAsGuest}
-          text="Continue as a guest"
-          variation={ButtonVariation.Secondary}
-        />
-      </View>
+      </CustomKeyboardAvoidingView>
     </SafeAreaView>
   );
 };
