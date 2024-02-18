@@ -12,11 +12,16 @@ import stylesheet from '@components/ButtonPrimary/ButtonPrimary.styles';
 interface ButtonProps {
   onPress: () => void | Promise<void>;
   text: string;
-  variation: ButtonVariation;
-  size: ButtonSize;
+  variation?: ButtonVariation;
+  size?: ButtonSize;
 }
 
-const ButtonPrimary = ({ onPress, variation, size, text }: ButtonProps) => {
+const ButtonPrimary = ({
+  onPress,
+  variation = ButtonVariation.Primary,
+  size = ButtonSize.Large,
+  text,
+}: ButtonProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const { styles } = useStyles(stylesheet, {
     styleVariation: variation,

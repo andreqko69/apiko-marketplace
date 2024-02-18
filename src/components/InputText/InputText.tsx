@@ -32,12 +32,12 @@ const InputText = ({
     hasError: !!errorMessage,
     isActive,
   });
-  const typeProps = getInputPropsByType(type);
 
   const handleTextChange = (text: string) => {
     onTextChange(text);
   };
 
+  const typeProps = getInputPropsByType(type);
   const icon = iconName ? (
     <Icon name={iconName} onPress={onIconPress} size={theme.iconSize.md} />
   ) : null;

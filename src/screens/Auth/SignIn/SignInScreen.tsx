@@ -114,7 +114,6 @@ const SignInScreen = () => {
           <ButtonLink
             onPress={handleContinueAsGuest}
             text="Continue as a guest"
-            variation={ButtonVariation.Secondary}
           />
         </View>
       </CustomKeyboardAvoidingView>
