@@ -1,5 +1,6 @@
-import { InputType } from './constants';
 import { TextInputProps } from 'react-native';
+
+import { InputType } from './constants';
 
 export const getInputPropsByType = (mode?: InputType): TextInputProps => {
   switch (mode) {
@@ -15,7 +16,10 @@ export const getInputPropsByType = (mode?: InputType): TextInputProps => {
         autoComplete: 'off',
         secureTextEntry: true,
       };
-    default:
-      return {};
+    default: {
+      return {
+        secureTextEntry: false,
+      };
+    }
   }
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo, useState } from 'react';
 import { Text, View } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 import { TextInput } from 'react-native-gesture-handler';
@@ -6,13 +6,16 @@ import { TextInput } from 'react-native-gesture-handler';
 import stylesheet from './InputText.styles';
 import { InputType } from './constants';
 import { getInputPropsByType } from './helpers';
+import Icon, { type IconName } from '../Icon/Icon';
 
 interface InputTextProps {
+  onTextChange: (text: string) => unknown;
   value?: string;
   placeholder?: string;
-  onTextChange: (text: string) => unknown;
   errorMessage?: string;
   type?: InputType;
+  iconName?: IconName;
+  onIconPress?: () => unknown;
 }
 
 const InputText = ({
@@ -21,13 +24,23 @@ const InputText = ({
   onTextChange,
   errorMessage,
   type,
+  iconName,
+  onIconPress,
 }: InputTextProps) => {
-  const { styles, theme } = useStyles(stylesheet, { hasError: !!errorMessage });
+  const [isActive, setIsActive] = useState(false);
+  const { styles, theme } = useStyles(stylesheet, {
+    hasError: !!errorMessage,
+    isActive,
+  });
   const typeProps = getInputPropsByType(type);
 
   const handleTextChange = (text: string) => {
     onTextChange(text);
   };
+
+  const icon = iconName ? (
+    <Icon name={iconName} onPress={onIconPress} size={theme.iconSize.md} />
+  ) : null;
 
   return (
     <View>
@@ -38,8 +51,11 @@ const InputText = ({
           value={value}
           placeholder={placeholder}
           onChangeText={handleTextChange}
+          onFocus={() => setIsActive(true)}
+          onBlur={() => setIsActive(false)}
           {...typeProps}
         />
+        {icon}
       </View>
       {!!errorMessage?.length && (
         <Text style={styles.errorMessage}>{errorMessage}</Text>
@@ -48,4 +64,4 @@ const InputText = ({
   );
 };
 
-export default InputText;
+export default memo(InputText);

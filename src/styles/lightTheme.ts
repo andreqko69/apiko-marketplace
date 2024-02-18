@@ -14,9 +14,6 @@ const lightTheme = {
       currentPrice: colors.darkRed,
       primaryAlternative: colors.white,
     },
-    background: {
-      primary: colors.lightGrey1,
-    },
     button: {
       typography: {
         primary: colors.white,
@@ -25,10 +22,10 @@ const lightTheme = {
       },
       background: {
         primary: colors.mainRed,
+        primaryActive: colors.activeRed,
         secondary: colors.background,
         primaryDisabled: colors.lightGrey2,
         secondaryDisabled: colors.background,
-        active: colors.activeRed,
       },
       borderColor: {
         primary: colors.mainRed,
@@ -38,8 +35,14 @@ const lightTheme = {
         secondary: colors.mainRed,
       },
     },
+    background: {
+      primary: colors.lightGrey1,
+    },
     icon: {
       color: {
+        primary: colors.lightGrey2,
+        secondary: colors.darkGrey3,
+        primaryActive: colors.mainRed,
         navigation: colors.black,
       },
     },
@@ -51,6 +54,7 @@ const lightTheme = {
       },
       borderColor: {
         primary: colors.lightGrey2,
+        primaryActive: colors.mainRed,
         error: colors.error,
       },
     },

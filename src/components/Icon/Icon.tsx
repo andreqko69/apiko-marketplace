@@ -1,5 +1,7 @@
 import React from 'react';
+import { useStyles } from 'react-native-unistyles';
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
+
 import iconMoonConfig from '../../selection.json';
 
 const IconComponent = createIconSetFromIcoMoon(iconMoonConfig);
@@ -55,9 +57,20 @@ const Icon = ({
   onPress,
 }: {
   name: IconName;
-  size: number;
-  color: string;
+  size?: number;
+  color?: string;
   onPress?: () => void;
-}) => <IconComponent name={name} size={size} color={color} onPress={onPress} />;
+}) => {
+  const { theme } = useStyles();
+
+  return (
+    <IconComponent
+      name={name}
+      size={size ?? theme.iconSize.md}
+      color={color ?? theme.palette.icon.color.primary}
+      onPress={onPress}
+    />
+  );
+};
 
 export default Icon;

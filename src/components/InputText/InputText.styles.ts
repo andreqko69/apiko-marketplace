@@ -7,12 +7,22 @@ const stylesheet = createStyleSheet((theme) => ({
     borderWidth: theme.borderWidth.sm,
     borderRadius: theme.borderRadius.sm,
     paddingHorizontal: theme.spaces.md,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     flexDirection: 'row',
+    gap: theme.spaces.sm,
     variants: {
       hasError: {
         true: {
           borderColor: theme.palette.input.borderColor.error,
+        },
+        false: {
+          borderColor: theme.palette.input.borderColor.primary,
+        },
+      },
+      isActive: {
+        true: {
+          borderColor: theme.palette.input.borderColor.primaryActive,
         },
         false: {
           borderColor: theme.palette.input.borderColor.primary,
@@ -24,7 +34,8 @@ const stylesheet = createStyleSheet((theme) => ({
     fontFamily: theme.fontFamily.regular,
     fontSize: theme.fontSize.sm,
     lineHeight: theme.fontSize.md,
-    width: '100%',
+    textAlign: 'left',
+    flex: 1,
     variants: {
       hasError: {
         true: {

@@ -22,10 +22,10 @@ const darkTheme = {
       },
       background: {
         primary: colors.mainRed,
-        secondary: colors.darkRed,
+        primaryActive: colors.activeRed,
+        secondary: colors.background,
         primaryDisabled: colors.lightGrey2,
         secondaryDisabled: colors.background,
-        active: colors.activeRed,
       },
       borderColor: {
         primary: colors.mainRed,
@@ -40,6 +40,9 @@ const darkTheme = {
     },
     icon: {
       color: {
+        primary: colors.lightGrey2,
+        secondary: colors.darkGrey3,
+        primaryActive: colors.mainRed,
         navigation: colors.black,
       },
     },
@@ -51,6 +54,7 @@ const darkTheme = {
       },
       borderColor: {
         primary: colors.lightGrey2,
+        primaryActive: colors.mainRed,
         error: colors.error,
       },
     },

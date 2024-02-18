@@ -2,6 +2,7 @@ const colors = {
   black: '#161616',
   darkGrey1: '#98969D',
   darkGrey2: '#767579',
+  darkGrey3: '#59585B',
   lightGrey: '#98969D',
   lightGrey1: '#EDEEF7',
   lightGrey2: '#98969D',

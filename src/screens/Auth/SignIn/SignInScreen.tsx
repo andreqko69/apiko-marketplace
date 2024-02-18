@@ -12,10 +12,14 @@ import ButtonLink from '@components/ButtonLink/ButtonLink';
 import { InputType } from '@components/InputText/constants';
 import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
 import CustomKeyboardAvoidingView from '@components/CustomKeyboardAvoidingView/CustomKeyboardAvoidingView';
+import { IconName } from '@components/Icon/Icon';
 import stylesheet from './SignInScreen.styles';
 
 const SignInScreen = () => {
   const { styles } = useStyles(stylesheet);
+  const [passwordInputType, setPasswordInputType] = useState(
+    InputType.Password
+  );
   const [inputState, setInputState] = useState({
     email: '',
     password: '',
@@ -27,6 +31,12 @@ const SignInScreen = () => {
 
   const handlePasswordChange = useCallback((text: string) => {
     setInputState((prevState) => ({ ...prevState, password: text }));
+  }, []);
+
+  const handlePasswordInputIconPress = useCallback(() => {
+    setPasswordInputType((prevType) =>
+      prevType === InputType.Password ? InputType.Text : InputType.Password
+    );
   }, []);
 
   const handleSignIn = async () => {
@@ -50,6 +60,9 @@ const SignInScreen = () => {
     console.log('Continue as guest');
   };
 
+  const passwordIconName =
+    passwordInputType === InputType.Password ? IconName.Eye : IconName.EyeOff;
+
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <CustomKeyboardAvoidingView style={styles.contentContainer}>
@@ -65,8 +78,9 @@ const SignInScreen = () => {
               placeholder="Password"
               value={inputState.password}
               onTextChange={handlePasswordChange}
-              type={InputType.Password}
-              errorMessage="Password is incorrect"
+              type={passwordInputType}
+              iconName={passwordIconName}
+              onIconPress={handlePasswordInputIconPress}
             />
           </View>
           <View style={styles.forgotPasswordContainer}>
