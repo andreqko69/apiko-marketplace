@@ -1,4 +1,5 @@
 const colors = {
+  backdrop: '#00000069',
   black: '#161616',
   darkGrey1: '#98969D',
   darkGrey2: '#767579',

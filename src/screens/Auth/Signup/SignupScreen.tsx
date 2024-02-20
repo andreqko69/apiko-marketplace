@@ -15,6 +15,7 @@ import {
   ButtonSize,
   ButtonVariation,
 } from '@components/ButtonPrimary/constants';
+import { ModalName } from '@navigation/modals';
 
 type NavigationProps = StackNavigationProp<
   AuthStackParamList,
@@ -54,7 +55,7 @@ const SignupScreen = () => {
   const handleSignUpPress = async () => {
     await new Promise((resolve) =>
       setTimeout(() => {
-        console.log('Input state:', inputState);
+        navigate(ModalName.MessageModal, { text: 'test' });
         resolve(inputState);
       }, 1000)
     );

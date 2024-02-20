@@ -58,6 +58,12 @@ const darkTheme = {
         error: colors.error,
       },
     },
+    modal: {
+      background: {
+        primary: colors.background,
+      },
+    },
+    backdropColor: colors.backdrop,
   },
 } as const;
 

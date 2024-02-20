@@ -5,13 +5,16 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 import useStore from '@stores/useStore';
-import AuthNavigator from './AuthNavigator/AuthNavigator';
-import AppNavigator from './AppNavigator/AppNavigator';
-import { ScreenName } from './screens';
+import AuthNavigator from '../AuthNavigator/AuthNavigator';
+import AppNavigator from '../AppNavigator/AppNavigator';
+import { ScreenName } from '../screens';
+import { ModalName } from '../modals';
+import MessageModal from '../../modals/MessageModal/MessageModal';
+import type { RootStackParamList } from './RootNavigator.types';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
-const Index = () => {
+const RootNavigator = () => {
   const store = useStore();
   const isAuthenticated = store.use.isAuthenticated();
 
@@ -38,10 +41,24 @@ const Index = () => {
               component={AuthNavigator}
             />
           )}
+          <Stack.Group screenOptions={{ presentation: 'transparentModal' }}>
+            <Stack.Screen
+              name={ModalName.MessageModal}
+              component={MessageModal}
+              initialParams={{
+                title: 'Success',
+                message: 'This is a success message',
+                primaryButtonText: 'OK',
+                onPrimaryButtonPress: () => {},
+                secondaryButtonText: 'Cancel',
+                onSecondaryButtonPress: () => {},
+              }}
+            />
+          </Stack.Group>
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
   );
 };
 
-export default Index;
+export default RootNavigator;

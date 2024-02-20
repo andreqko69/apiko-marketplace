@@ -10,8 +10,7 @@ const AppNavigator = () => (
   <Stack.Navigator
     screenOptions={{
       headerShown: false,
-    }}
-  >
+    }}>
     <Stack.Screen name={ScreenName.TabNavigator} component={TabNavigator} />
   </Stack.Navigator>
 );
