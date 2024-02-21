@@ -2,12 +2,15 @@ import React, { useCallback, useState } from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
+import {
+  type CompositeScreenProps,
+  useNavigation,
+} from '@react-navigation/native';
+import type { StackScreenProps } from '@react-navigation/stack';
 
 import stylesheet from './SignUpScreen.styles';
 import InputText from '@components/InputText/InputText';
 import ButtonLink from '@components/ButtonLink/ButtonLink';
-import { useNavigation } from '@react-navigation/native';
-import type { StackNavigationProp } from '@react-navigation/stack';
 import type { AuthStackParamList } from '@navigation/AuthNavigator/AuthNavigator.types';
 import { ScreenName } from '@navigation/screens';
 import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
@@ -16,15 +19,16 @@ import {
   ButtonVariation,
 } from '@components/ButtonPrimary/constants';
 import { ModalName } from '@navigation/modals';
+import type { RootStackParamList } from '@navigation/RootNavigator/RootNavigator.types';
 
-type NavigationProps = StackNavigationProp<
-  AuthStackParamList,
-  ScreenName.SignUp
+type NavigationProps = CompositeScreenProps<
+  StackScreenProps<AuthStackParamList, ScreenName.SignUp>,
+  StackScreenProps<RootStackParamList>
 >;
 
 const SignupScreen = () => {
   const { styles } = useStyles(stylesheet);
-  const { navigate } = useNavigation<NavigationProps>();
+  const { navigate, goBack } = useNavigation<NavigationProps['navigation']>();
   const [inputState, setInputState] = useState({
     firstName: '',
     lastName: '',
@@ -55,7 +59,16 @@ const SignupScreen = () => {
   const handleSignUpPress = async () => {
     await new Promise((resolve) =>
       setTimeout(() => {
-        navigate(ModalName.MessageModal, { text: 'test' });
+        navigate(ModalName.MessageModal, {
+          title: 'Success',
+          message:
+            'You have your account now. Check your email to confirm email address.',
+          primaryButtonText: 'Ok',
+          onPrimaryButtonPress: () => {
+            // navigate(ScreenName.SignIn);
+            goBack();
+          },
+        });
         resolve(inputState);
       }, 1000)
     );

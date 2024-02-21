@@ -29,6 +29,7 @@ const RootNavigator = () => {
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
+            gestureEnabled: false,
           }}>
           {isAuthenticated ? (
             <Stack.Screen
@@ -46,9 +47,9 @@ const RootNavigator = () => {
               name={ModalName.MessageModal}
               component={MessageModal}
               initialParams={{
-                title: 'Success',
-                message: 'This is a success message',
-                primaryButtonText: 'OK',
+                title: 'Error',
+                message: 'Something went wrong!',
+                primaryButtonText: 'Ok',
                 onPrimaryButtonPress: () => {},
                 secondaryButtonText: 'Cancel',
                 onSecondaryButtonPress: () => {},

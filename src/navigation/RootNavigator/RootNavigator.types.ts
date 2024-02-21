@@ -1,6 +1,14 @@
 import { ModalName } from '../modals';
-import type { MessageModalProps } from '../../modals/MessageModal/MessageModal';
 import { ScreenName } from '../screens';
+
+type MessageModalProps = {
+  title: string;
+  message: string;
+  primaryButtonText: string;
+  onPrimaryButtonPress: () => void;
+  secondaryButtonText?: string;
+  onSecondaryButtonPress?: () => void;
+};
 
 export type RootStackParamList = {
   [ModalName.MessageModal]: MessageModalProps;
