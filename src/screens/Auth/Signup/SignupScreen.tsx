@@ -81,13 +81,10 @@ const SignupScreen = () => {
     const { isValid: isFirstNameValid } = validateFirstName(
       formState.firstName.value
     );
-
     const { isValid: isLastNameValid } = validateLastName(
       formState.lastName.value
     );
-
     const { isValid: isEmailNameValid } = validateEmail(formState.email.value);
-
     const { isValid: isLocationValid } = validateLocation(
       formState.location.value
     );
@@ -106,13 +103,7 @@ const SignupScreen = () => {
     validateLocation,
   ]);
 
-  const isSubmitDisabled = useMemo(
-    () => !validateValues(),
-    // we want to re-run this function only when error messages changes
-    // we don't care about value change
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [formState]
-  );
+  const isSubmitDisabled = useMemo(() => !validateValues(), [validateValues]);
 
   const handleFirstNameChange = useCallback(
     (newValue: string) => {
