@@ -6,6 +6,7 @@ const stylesheet = createStyleSheet((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: theme.palette.backdropColor,
+    padding: theme.spaces.xlg,
   },
   content: {
     padding: theme.spaces.xxxlg,

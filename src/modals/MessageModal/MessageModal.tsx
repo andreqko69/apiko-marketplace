@@ -10,6 +10,7 @@ import ButtonLink from '@components/ButtonLink/ButtonLink';
 import type { ModalName } from '@modals/constants';
 import type { RootStackParamList } from '@navigation/RootNavigator/RootNavigator.types';
 import stylesheet from './MessageModal.styles';
+import { ButtonSize } from '@components/ButtonPrimary/constants';
 
 type RouteProps = StackScreenProps<RootStackParamList, ModalName.MessageModal>;
 
@@ -34,6 +35,7 @@ const MessageModal = () => {
         <ButtonPrimary
           onPress={onPrimaryButtonPress}
           text={primaryButtonText}
+          size={ButtonSize.Medium}
         />
         {secondaryButtonText && onSecondaryButtonPress && (
           <ButtonLink

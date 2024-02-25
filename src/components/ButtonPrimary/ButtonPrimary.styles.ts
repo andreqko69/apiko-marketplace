@@ -8,6 +8,7 @@ import {
 const stylesheet = createStyleSheet((theme) => ({
   button: {
     borderRadius: theme.borderRadius.sm,
+    alignSelf: 'center',
     variants: {
       styleVariation: {
         [ButtonVariation.Primary]: {
@@ -26,15 +27,16 @@ const stylesheet = createStyleSheet((theme) => ({
           minWidth: 116,
         },
         [ButtonSize.Medium]: {
-          paddingVertical: theme.spaces.md,
+          paddingVertical: theme.spaces.sm,
           paddingHorizontal: theme.spaces.sm,
           minWidth: 164,
+          height: 46,
         },
         [ButtonSize.Large]: {
           paddingVertical: theme.spaces.md,
           paddingHorizontal: theme.spaces.sm,
           width: '100%',
-          minHeight: 56,
+          height: 56,
         },
       },
       disabled: {

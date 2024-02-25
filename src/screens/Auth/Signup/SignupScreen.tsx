@@ -20,6 +20,8 @@ import {
 import { ModalName } from '@modals/constants';
 import type { RootStackParamList } from '@navigation/RootNavigator/RootNavigator.types';
 import inputValidator from '@services/InputValidator';
+import { InputType } from '@components/InputText/constants';
+
 import stylesheet from './SignUpScreen.styles';
 
 type NavigationProps = CompositeScreenProps<
@@ -163,7 +165,7 @@ const SignupScreen = () => {
         navigate(ModalName.MessageModal, {
           title: 'Success',
           message:
-            'You have your account now. Check your email to confirm email address.',
+            'You have your account now.\n Check your email to confirm email address.',
           primaryButtonText: 'Ok',
           onPrimaryButtonPress: () => navigate(ScreenName.Welcome),
         });
@@ -194,6 +196,7 @@ const SignupScreen = () => {
           value={email.value}
           errorMessage={email.errorMessage}
           onTextChange={handleEmailChange}
+          type={InputType.Email}
         />
         <InputText
           placeholder="Choose your location (optional)"
