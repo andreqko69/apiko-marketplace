@@ -14,7 +14,7 @@ import {
 } from '@components/ButtonPrimary/constants';
 import WelcomeImage from '@assets/images/welcome.jpeg';
 import ButtonLink from '@components/ButtonLink/ButtonLink';
-import { ScreenName } from '@navigation/screens';
+import { ScreenName } from '@screens/constants';
 import type { AuthStackParamList } from '@navigation/AuthNavigator/AuthNavigator.types';
 
 type NavigationProps = StackNavigationProp<

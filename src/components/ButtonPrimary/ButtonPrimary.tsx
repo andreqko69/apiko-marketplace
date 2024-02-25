@@ -14,6 +14,7 @@ interface ButtonProps {
   text: string;
   variation?: ButtonVariation;
   size?: ButtonSize;
+  disabled?: boolean;
 }
 
 const ButtonPrimary = ({
@@ -21,11 +22,13 @@ const ButtonPrimary = ({
   variation = ButtonVariation.Primary,
   size = ButtonSize.Large,
   text,
+  disabled,
 }: ButtonProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const { styles } = useStyles(stylesheet, {
     styleVariation: variation,
     size,
+    disabled: !!disabled,
   });
 
   const handlePress = async () => {
@@ -47,6 +50,7 @@ const ButtonPrimary = ({
 
   return (
     <TouchableOpacity
+      disabled={disabled}
       activeOpacity={0.8}
       style={styles.button}
       onPress={handlePress}>

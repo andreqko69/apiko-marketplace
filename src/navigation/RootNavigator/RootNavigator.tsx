@@ -7,9 +7,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import useStore from '@stores/useStore';
 import AuthNavigator from '../AuthNavigator/AuthNavigator';
 import AppNavigator from '../AppNavigator/AppNavigator';
-import { ScreenName } from '../screens';
-import { ModalName } from '../modals';
-import MessageModal from '../../modals/MessageModal/MessageModal';
+import { ScreenName } from '@screens/constants';
+import { ModalName } from '@modals/constants';
+import MessageModal from '@modals/MessageModal/MessageModal';
 import type { RootStackParamList } from './RootNavigator.types';
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -46,14 +46,6 @@ const RootNavigator = () => {
             <Stack.Screen
               name={ModalName.MessageModal}
               component={MessageModal}
-              initialParams={{
-                title: 'Error',
-                message: 'Something went wrong!',
-                primaryButtonText: 'Ok',
-                onPrimaryButtonPress: () => {},
-                secondaryButtonText: 'Cancel',
-                onSecondaryButtonPress: () => {},
-              }}
             />
           </Stack.Group>
         </Stack.Navigator>

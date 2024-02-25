@@ -6,7 +6,7 @@ const colors = {
   darkGrey3: '#59585B',
   lightGrey: '#98969D',
   lightGrey1: '#EDEEF7',
-  lightGrey2: '#98969D',
+  lightGrey2: '#D7D6DA',
   semiTransGrey: 'rgba(215, 214, 218, 0.68)',
   semiTransWhite: 'rgba(254, 254, 254, 0.77)',
   background: '#F9F9FF',

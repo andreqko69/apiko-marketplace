@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
@@ -8,49 +8,159 @@ import {
 } from '@react-navigation/native';
 import type { StackScreenProps } from '@react-navigation/stack';
 
-import stylesheet from './SignUpScreen.styles';
 import InputText from '@components/InputText/InputText';
 import ButtonLink from '@components/ButtonLink/ButtonLink';
 import type { AuthStackParamList } from '@navigation/AuthNavigator/AuthNavigator.types';
-import { ScreenName } from '@navigation/screens';
+import { ScreenName } from '@screens/constants';
 import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
 import {
   ButtonSize,
   ButtonVariation,
 } from '@components/ButtonPrimary/constants';
-import { ModalName } from '@navigation/modals';
+import { ModalName } from '@modals/constants';
 import type { RootStackParamList } from '@navigation/RootNavigator/RootNavigator.types';
+import inputValidator from '@services/InputValidator';
+import stylesheet from './SignUpScreen.styles';
 
 type NavigationProps = CompositeScreenProps<
   StackScreenProps<AuthStackParamList, ScreenName.SignUp>,
   StackScreenProps<RootStackParamList>
 >;
 
+type FormInputState = {
+  value: string;
+  errorMessage?: string;
+};
+
+const defaultFormValue: FormInputState = {
+  value: '',
+};
+
 const SignupScreen = () => {
   const { styles } = useStyles(stylesheet);
-  const { navigate, goBack } = useNavigation<NavigationProps['navigation']>();
-  const [inputState, setInputState] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    location: '',
+  const { navigate } = useNavigation<NavigationProps['navigation']>();
+  const [formState, setFormState] = useState({
+    firstName: defaultFormValue,
+    lastName: defaultFormValue,
+    email: defaultFormValue,
+    location: defaultFormValue,
   });
 
-  const handleFirstNameChange = useCallback((text: string) => {
-    setInputState((prevState) => ({ ...prevState, email: text }));
+  const validateFirstName = useCallback((value: string) => {
+    return inputValidator.validateName({
+      fieldName: 'First name',
+      value,
+      isRequired: true,
+    });
   }, []);
 
-  const handleLastNameChange = useCallback((text: string) => {
-    setInputState((prevState) => ({ ...prevState, password: text }));
+  const validateLastName = useCallback((value: string) => {
+    return inputValidator.validateName({
+      fieldName: 'Last name',
+      value,
+      isRequired: true,
+    });
   }, []);
 
-  const handleEmailChange = useCallback((text: string) => {
-    setInputState((prevState) => ({ ...prevState, email: text }));
+  const validateEmail = useCallback((value: string) => {
+    return inputValidator.validateEmail({
+      fieldName: 'Email',
+      value,
+      isRequired: true,
+    });
   }, []);
 
-  const handleLocationChange = useCallback((text: string) => {
-    setInputState((prevState) => ({ ...prevState, password: text }));
+  const validateLocation = useCallback((value: string) => {
+    return inputValidator.validateLocation({
+      fieldName: 'Location',
+      value,
+    });
   }, []);
+
+  const validateValues = useCallback((): boolean => {
+    const { isValid: isFirstNameValid } = validateFirstName(
+      formState.firstName.value
+    );
+
+    const { isValid: isLastNameValid } = validateLastName(
+      formState.lastName.value
+    );
+
+    const { isValid: isEmailNameValid } = validateEmail(formState.email.value);
+
+    const { isValid: isLocationValid } = validateLocation(
+      formState.location.value
+    );
+
+    return (
+      isFirstNameValid && isLastNameValid && isEmailNameValid && isLocationValid
+    );
+  }, [
+    formState.email.value,
+    formState.firstName.value,
+    formState.lastName.value,
+    formState.location.value,
+    validateEmail,
+    validateFirstName,
+    validateLastName,
+    validateLocation,
+  ]);
+
+  const isSubmitDisabled = useMemo(
+    () => !validateValues(),
+    // we want to re-run this function only when error messages changes
+    // we don't care about value change
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [formState]
+  );
+
+  const handleFirstNameChange = useCallback(
+    (newValue: string) => {
+      const { errorMessage } = validateFirstName(newValue);
+
+      setFormState((prevState) => ({
+        ...prevState,
+        firstName: { value: newValue, errorMessage },
+      }));
+    },
+    [validateFirstName]
+  );
+
+  const handleLastNameChange = useCallback(
+    (newValue: string) => {
+      const { errorMessage } = validateLastName(newValue);
+
+      setFormState((prevState) => ({
+        ...prevState,
+        lastName: { value: newValue, errorMessage },
+      }));
+    },
+    [validateLastName]
+  );
+
+  const handleEmailChange = useCallback(
+    (newValue: string) => {
+      const { errorMessage } = validateEmail(newValue);
+
+      setFormState((prevState) => ({
+        ...prevState,
+        email: { value: newValue, errorMessage },
+      }));
+    },
+    [validateEmail]
+  );
+
+  const handleLocationChange = useCallback(
+    (newValue: string) => {
+      const { errorMessage } = validateLocation(newValue);
+
+      setFormState((prevState) => ({
+        ...prevState,
+        location: { value: newValue, errorMessage },
+      }));
+    },
+    [validateLocation]
+  );
 
   const handleSignInPress = () => {
     navigate(ScreenName.SignIn);
@@ -64,41 +174,45 @@ const SignupScreen = () => {
           message:
             'You have your account now. Check your email to confirm email address.',
           primaryButtonText: 'Ok',
-          onPrimaryButtonPress: () => {
-            // navigate(ScreenName.SignIn);
-            goBack();
-          },
+          onPrimaryButtonPress: () => navigate(ScreenName.Welcome),
         });
-        resolve(inputState);
+        resolve(formState);
       }, 1000)
     );
   };
+
+  const { firstName, lastName, email, location } = formState;
 
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <View style={styles.inputContainer}>
         <InputText
-          value={inputState.firstName}
           placeholder="First name"
+          value={firstName.value}
+          errorMessage={firstName.errorMessage}
           onTextChange={handleFirstNameChange}
         />
         <InputText
-          value={inputState.lastName}
+          value={lastName.value}
+          errorMessage={lastName.errorMessage}
           placeholder="Last name"
           onTextChange={handleLastNameChange}
         />
         <InputText
-          value={inputState.email}
           placeholder="Email"
+          value={email.value}
+          errorMessage={email.errorMessage}
           onTextChange={handleEmailChange}
         />
         <InputText
-          value={inputState.location}
-          placeholder="Location"
+          placeholder="Choose your location (optional)"
+          value={location.value}
+          errorMessage={location.errorMessage}
           onTextChange={handleLocationChange}
         />
       </View>
       <ButtonPrimary
+        disabled={isSubmitDisabled}
         onPress={handleSignUpPress}
         text="Sign up"
         variation={ButtonVariation.Primary}

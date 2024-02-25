@@ -1,4 +1,4 @@
-import { ScreenName } from '../screens';
+import { ScreenName } from '@screens/constants';
 
 export type AuthStackParamList = {
   [ScreenName.Welcome]: undefined;

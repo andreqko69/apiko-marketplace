@@ -10,9 +10,11 @@
       "@constants/*": ["src/constants/*"],
       "@navigation/*": ["src/navigation/*"],
       "@screens/*": ["src/screens/*"],
+      "@modals/*": ["src/modals/*"],
       "@styles/*": ["src/styles/*"],
       "@assets/*": ["src/assets/*"],
       "@utils/*": ["src/utils/*"],
+      "@services/*": ["src/services/*"],
     }
   },
 }

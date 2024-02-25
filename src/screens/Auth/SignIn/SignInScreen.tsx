@@ -15,7 +15,7 @@ import { InputType } from '@components/InputText/constants';
 import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
 import CustomKeyboardAvoidingView from '@components/CustomKeyboardAvoidingView/CustomKeyboardAvoidingView';
 import { IconName } from '@components/Icon/Icon';
-import { ScreenName } from '@navigation/screens';
+import { ScreenName } from '@screens/constants';
 import type { AuthStackParamList } from '@navigation/AuthNavigator/AuthNavigator.types';
 import stylesheet from './SignInScreen.styles';
 

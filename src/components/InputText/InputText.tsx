@@ -48,7 +48,7 @@ const InputText = ({
         <TextInput
           placeholderTextColor={theme.palette.input.color.placeholder}
           style={styles.input}
-          value={value}
+          defaultValue={value}
           placeholder={placeholder}
           onChangeText={handleTextChange}
           onFocus={() => setIsActive(true)}

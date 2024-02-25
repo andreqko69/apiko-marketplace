@@ -1,6 +1,9 @@
 import { createStyleSheet } from 'react-native-unistyles';
 
 const stylesheet = createStyleSheet((theme) => ({
+  container: {
+    gap: theme.spaces.sm,
+  },
   title: {
     fontFamily: theme.fontFamily.bold,
     fontSize: theme.fontSize.lg,

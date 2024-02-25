@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { HomeStackParamList } from './HomeNavigator.types';
 import HomeScreen from '../../screens/App/Home/HomeScreen';
-import { ScreenName } from '../screens';
+import { ScreenName } from '@screens/constants';
 
 const Stack = createStackNavigator<HomeStackParamList>();
 

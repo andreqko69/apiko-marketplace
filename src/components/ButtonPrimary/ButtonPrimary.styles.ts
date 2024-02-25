@@ -37,6 +37,11 @@ const stylesheet = createStyleSheet((theme) => ({
           minHeight: 56,
         },
       },
+      disabled: {
+        true: {
+          backgroundColor: theme.palette.button.background.primaryDisabled,
+        },
+      },
     },
   },
   text: {

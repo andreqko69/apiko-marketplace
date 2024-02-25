@@ -1,5 +1,5 @@
-import { ModalName } from '../modals';
-import { ScreenName } from '../screens';
+import { ModalName } from '@modals/constants';
+import { ScreenName } from '@screens/constants';
 
 type MessageModalProps = {
   title: string;

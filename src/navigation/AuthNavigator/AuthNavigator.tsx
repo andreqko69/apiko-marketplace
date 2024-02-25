@@ -7,7 +7,7 @@ import SignupScreen from '@screens/Auth/Signup/SignupScreen';
 import WelcomeScreen from '@screens/Auth/Welcome/WelcomeScreen';
 import HeaderLeft from '@components/HeaderLeft/HeaderLeft';
 import stylesheet from './AuthNavigator.styles';
-import { ScreenName } from '../screens';
+import { ScreenName } from '@screens/constants';
 import { AuthStackParamList } from './AuthNavigator.types';
 import ResetPasswordScreen from '@screens/Auth/ResetPassword/ResetPasswordScreen';
 import CreateNewPasswordScreen from '@screens/Auth/CreateNewPassword/CreateNewPasswordScreen';

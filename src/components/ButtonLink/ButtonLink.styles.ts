@@ -9,6 +9,7 @@ const stylesheet = createStyleSheet((theme) => ({
     fontSize: theme.fontSize.md,
     lineHeight: theme.lineHeight.md,
     color: theme.palette.button.typography.secondary,
+    textAlign: 'center',
   },
   loader: {
     color: theme.palette.button.loaderColor.secondary,

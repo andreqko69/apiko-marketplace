@@ -9,7 +9,7 @@ import InputText from '@components/InputText/InputText';
 import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
 import { InputType } from '@components/InputText/constants';
 import type { AuthStackParamList } from '@navigation/AuthNavigator/AuthNavigator.types';
-import { ScreenName } from '@navigation/screens';
+import { ScreenName } from '@screens/constants';
 import stylesheet from './ResetPasswordScreen.styles';
 
 type NavigationProps = StackNavigationProp<
