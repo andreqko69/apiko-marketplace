@@ -12,7 +12,7 @@ type ValidationResult = {
   errorMessage?: string;
 };
 
-export class InputValidator {
+class InputValidator {
   private nameMinLength = 2;
   private nameMaxLength = 40;
   private locationMinLength = 2;
@@ -23,6 +23,9 @@ export class InputValidator {
   // regular email regular expression
   private emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
+  /**
+   * Validates a value against a minimum length
+   */
   private minLengthValidator = ({
     fieldName,
     value,
@@ -54,6 +57,9 @@ export class InputValidator {
     (minLength: number) => (params: ValidationParams) =>
       this.minLengthValidator({ ...params, minLength });
 
+  /**
+   * Validates a value against a maximum length
+   */
   private maxLengthValidator = ({
     fieldName,
     value,
@@ -71,6 +77,9 @@ export class InputValidator {
     };
   };
 
+  /**
+   * Returns a function that validates a value against a maximum length
+   */
   private getMaxLengthValidator =
     (maxLength: number) => (params: ValidationParams) =>
       this.maxLengthValidator({ ...params, maxLength });
