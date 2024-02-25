@@ -1,14 +1,14 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import { useStyles } from 'react-native-unistyles';
 import type { StackScreenProps } from '@react-navigation/stack';
 import { useRoute } from '@react-navigation/native';
-import { useStyles } from 'react-native-unistyles';
 
 import Modal from '@components/Modal/Modal';
-import type { RootStackParamList } from '@navigation/RootNavigator/RootNavigator.types';
-import type { ModalName } from '@modals/constants';
 import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
 import ButtonLink from '@components/ButtonLink/ButtonLink';
+import type { ModalName } from '@modals/constants';
+import type { RootStackParamList } from '@navigation/RootNavigator/RootNavigator.types';
 import stylesheet from './MessageModal.styles';
 
 type RouteProps = StackScreenProps<RootStackParamList, ModalName.MessageModal>;

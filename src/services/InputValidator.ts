@@ -71,7 +71,7 @@ class InputValidator {
       isValid,
       errorMessage: isValid
         ? undefined
-        : `${capitalize(fieldName)} must be at most ${
+        : `${capitalize(fieldName.toLowerCase())} must be at most ${
             this.nameMaxLength
           } characters long`,
     };
@@ -177,18 +177,13 @@ class InputValidator {
    * Validates a provided value against a set of validators
    */
   private runValidationFlow({
-    fieldName,
-    value,
     validators,
-  }: {
-    fieldName: string;
-    value: string;
-    validators: Array<
-      ({ fieldName, value }: ValidationParams) => ValidationResult
-    >;
+    ...params
+  }: ValidationParams & {
+    validators: Array<(p: ValidationParams) => ValidationResult>;
   }) {
     for (const validator of validators) {
-      const { isValid, errorMessage } = validator({ fieldName, value });
+      const { isValid, errorMessage } = validator(params);
       // return early if the value is invalid
       if (!isValid) {
         return {
