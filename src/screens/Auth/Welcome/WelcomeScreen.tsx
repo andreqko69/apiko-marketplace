@@ -16,6 +16,7 @@ import WelcomeImage from '@assets/images/welcome.jpeg';
 import ButtonLink from '@components/ButtonLink/ButtonLink';
 import { ScreenName } from '@screens/constants';
 import type { AuthStackParamList } from '@navigation/AuthNavigator/AuthNavigator.types';
+import { useTranslation } from 'react-i18next';
 
 type NavigationProps = StackNavigationProp<
   AuthStackParamList,
@@ -23,6 +24,7 @@ type NavigationProps = StackNavigationProp<
 >;
 
 const WelcomeScreen = () => {
+  const { t } = useTranslation();
   const { styles } = useStyles(stylesheet);
   const { navigate } = useNavigation<NavigationProps>();
 
@@ -42,23 +44,20 @@ const WelcomeScreen = () => {
           locations={[0, 0.75]}
           style={styles.linearGradient}>
           <View style={styles.contentWrapper}>
-            <Text style={styles.title}>Hey! Welcome</Text>
-            <Text style={styles.text}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-              turpis molestie, dictum est a, mattis tellus. Sed dignissim
-            </Text>
+            <Text style={styles.title}>{t('welcome.title')}</Text>
+            <Text style={styles.text}>{t('welcome.message')}</Text>
             <View style={styles.buttonContainer}>
               <ButtonPrimary
                 onPress={handleSignIn}
                 variation={ButtonVariation.Secondary}
                 size={ButtonSize.Large}
-                text="Sign in"
+                text={t('sign_in')}
               />
               <ButtonPrimary
                 onPress={handleCreateAccount}
                 variation={ButtonVariation.Primary}
                 size={ButtonSize.Large}
-                text="Create account"
+                text={t('create_account')}
               />
             </View>
             <View style={styles.guestContainer}>
@@ -66,7 +65,7 @@ const WelcomeScreen = () => {
                 onPress={() => {
                   console.log('You are guest!');
                 }}
-                text="Continue as a guest"
+                text={t('continue_as_guest')}
               />
             </View>
           </View>

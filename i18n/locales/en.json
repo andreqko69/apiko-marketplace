@@ -1,0 +1,9 @@
+{
+  "welcome": {
+    "title": "Hey! Welcome",
+    "message": "Discover amazing products from sellers around the world, all in one place"
+  },
+  "sign_in": "Sign in",
+  "create_account": "Create account",
+  "continue_as_guest": "Continue as a guest"
+}
