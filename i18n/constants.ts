@@ -3,4 +3,4 @@ export enum Locale {
   Ukrainian = 'ua',
 }
 
-export const defaultNamespace = 'translation';
+export const defaultNamespace = 'default';

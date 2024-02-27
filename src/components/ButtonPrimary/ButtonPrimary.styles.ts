@@ -48,8 +48,6 @@ const stylesheet = createStyleSheet((theme) => ({
   },
   text: {
     fontFamily: theme.fontFamily.bold,
-    fontSize: theme.fontSize.md,
-    lineHeight: theme.lineHeight.md,
     textAlign: 'center',
     variants: {
       styleVariation: {
@@ -58,6 +56,14 @@ const stylesheet = createStyleSheet((theme) => ({
         },
         [ButtonVariation.Secondary]: {
           color: theme.palette.button.typography.secondary,
+        },
+      },
+      size: {
+        [ButtonSize.Medium]: {
+          fontSize: theme.fontSize.md,
+        },
+        [ButtonSize.Large]: {
+          fontSize: theme.fontSize.md,
         },
       },
     },

@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 
 import RootNavigator from '@navigation/RootNavigator/RootNavigator';
 import './setup';
 
 function App(): React.JSX.Element {
-  return <RootNavigator />;
+  return (
+    <StrictMode>
+      <RootNavigator />
+    </StrictMode>
+  );
 }
 
 export default App;
