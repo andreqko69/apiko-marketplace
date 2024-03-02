@@ -1,6 +1,11 @@
 export enum Locale {
   English = 'en',
-  Ukrainian = 'ua',
+  Ukrainian = 'uk',
+}
+
+export enum TranslationContext {
+  Male = 'male',
+  Female = 'female',
 }
 
 export const defaultNamespace = 'default';

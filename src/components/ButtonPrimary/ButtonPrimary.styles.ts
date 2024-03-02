@@ -9,6 +9,7 @@ const stylesheet = createStyleSheet((theme) => ({
   button: {
     borderRadius: theme.borderRadius.sm,
     alignSelf: 'center',
+    justifyContent: 'center',
     variants: {
       styleVariation: {
         [ButtonVariation.Primary]: {

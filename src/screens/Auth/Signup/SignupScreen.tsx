@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 import {
@@ -23,6 +24,7 @@ import inputValidator from '@services/InputValidator';
 import { InputType } from '@components/InputText/constants';
 
 import stylesheet from './SignUpScreen.styles';
+import { TranslationContext } from '../../../../i18n/constants';
 
 type NavigationProps = CompositeScreenProps<
   StackScreenProps<AuthStackParamList, ScreenName.SignUp>,
@@ -39,6 +41,7 @@ const defaultFormValue: FormInputState = {
 };
 
 const SignupScreen = () => {
+  const { t } = useTranslation();
   const { styles } = useStyles(stylesheet);
   const { navigate } = useNavigation<NavigationProps['navigation']>();
   const [formState, setFormState] = useState({
@@ -48,36 +51,51 @@ const SignupScreen = () => {
     location: defaultFormValue,
   });
 
-  const validateFirstName = useCallback((value: string) => {
-    return inputValidator.validateName({
-      fieldName: 'First name',
-      value,
-      isRequired: true,
-    });
-  }, []);
+  const validateFirstName = useCallback(
+    (value: string) => {
+      return inputValidator.validateName({
+        fieldName: t('firstName'),
+        value,
+        isRequired: true,
+      });
+    },
+    [t]
+  );
 
-  const validateLastName = useCallback((value: string) => {
-    return inputValidator.validateName({
-      fieldName: 'Last name',
-      value,
-      isRequired: true,
-    });
-  }, []);
+  const validateLastName = useCallback(
+    (value: string) => {
+      return inputValidator.validateName({
+        fieldName: t('lastName'),
+        value,
+        isRequired: true,
+      });
+    },
+    [t]
+  );
 
-  const validateEmail = useCallback((value: string) => {
-    return inputValidator.validateEmail({
-      fieldName: 'Email',
-      value,
-      isRequired: true,
-    });
-  }, []);
+  const validateEmail = useCallback(
+    (value: string) => {
+      return inputValidator.validateEmail({
+        fieldName: t('email'),
+        value,
+        isRequired: true,
+      });
+    },
+    [t]
+  );
 
-  const validateLocation = useCallback((value: string) => {
-    return inputValidator.validateLocation({
-      fieldName: 'Location',
-      value,
-    });
-  }, []);
+  const validateLocation = useCallback(
+    (value: string) => {
+      return inputValidator.validateLocation({
+        fieldName: t('location'),
+        value,
+        translationParams: {
+          context: TranslationContext.Female,
+        },
+      });
+    },
+    [t]
+  );
 
   const validateValues = useCallback((): boolean => {
     const { isValid: isFirstNameValid } = validateFirstName(
@@ -180,26 +198,26 @@ const SignupScreen = () => {
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <View style={styles.inputContainer}>
         <InputText
-          placeholder="First name"
+          placeholder={t('firstName')}
           value={firstName.value}
           errorMessage={firstName.errorMessage}
           onTextChange={handleFirstNameChange}
         />
         <InputText
+          placeholder={t('lastName')}
           value={lastName.value}
           errorMessage={lastName.errorMessage}
-          placeholder="Last name"
           onTextChange={handleLastNameChange}
         />
         <InputText
-          placeholder="Email"
+          placeholder={t('email')}
           value={email.value}
           errorMessage={email.errorMessage}
           onTextChange={handleEmailChange}
           type={InputType.Email}
         />
         <InputText
-          placeholder="Choose your location (optional)"
+          placeholder={t('chooseLocation')}
           value={location.value}
           errorMessage={location.errorMessage}
           onTextChange={handleLocationChange}
@@ -208,13 +226,13 @@ const SignupScreen = () => {
       <ButtonPrimary
         disabled={isSubmitDisabled}
         onPress={handleSignUpPress}
-        text="Sign up"
+        text={t('signUp')}
         variation={ButtonVariation.Primary}
         size={ButtonSize.Large}
       />
       <View style={styles.signInContainer}>
-        <Text style={styles.signInText}>Already got an account?</Text>
-        <ButtonLink onPress={handleSignInPress} text="Sign in" />
+        <Text style={styles.signInText}>{t('alreadyHaveAccount')}</Text>
+        <ButtonLink onPress={handleSignInPress} text={t('signIn')} />
       </View>
     </SafeAreaView>
   );

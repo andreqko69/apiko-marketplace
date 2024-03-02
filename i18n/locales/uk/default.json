@@ -1,0 +1,53 @@
+{
+  "welcome": {
+    "title": "Ласкаво просимо!",
+    "message": "Відкрийте для себе дивовижні товари від продавців з усього світу в одному місці"
+  },
+  "errorMessages": {
+    "minLength_male_one": "{{fieldName}} повинно бути мінімум {{count}} символ довжиною",
+    "minLength_female_one": "{{fieldName}} повинна бути мінімум {{count}} символ довжиною",
+    "minLength_male_few": "{{fieldName}} повинно бути мінімум {{count}} символи довжиною",
+    "minLength_female_few": "{{fieldName}} повинна бути мінімум {{count}} символи довжиною",
+    "minLength_male_many": "{{fieldName}} повинно бути мінімум {{count}} символів довжиною",
+    "minLength_female_many": "{{fieldName}} повинна бути мінімум {{count}} символів довжиною",
+    "minLength_male_other": "$t(errorMessages.minLength_male_many)",
+    "minLength_female_other": "$t(errorMessages.minLength_female_many)",
+
+    "maxLength_male_one": "{{fieldName}} повинно бути максимум {{count}} символ довжиною",
+    "maxLength_female_one": "{{fieldName}} повинна бути максимум {{count}} символ довжиною",
+    "maxLength_male_few": "{{fieldName}} повинно бути максимум {{count}} символи довжиною",
+    "maxLength_female_few": "{{fieldName}} повинна бути максимум {{count}} символи довжиною",
+    "maxLength_male_many": "{{fieldName}} повинно бути максимум {{count}} символів довжиною",
+    "maxLength_female_many": "{{fieldName}} повинна бути максимум {{count}} символів довжиною",
+    "maxLength_male_other": "$t(errorMessages.maxLength_male_many)",
+    "maxLength_female_other": "$t(errorMessages.maxLength_female_many)",
+
+    "noNumericOrSpecialCharacters_male": "{{fieldName}} не повинно містити чисел, або спеціальних символів",
+    "noNumericOrSpecialCharacters_female": "{{fieldName}} не повинна містити чисел, або спеціальних символів",
+
+    "invalidValue_male": "Будь ласка, введіть правильний {{fieldName}}",
+    "invalidValue_female": "Будь ласка, введіть правильну {{fieldName}}",
+
+    "fieldIsMandatory": "Це поле є обовʼязковим"
+  },
+  "signIn": "Вхід",
+  "signUp": "Створити аккаунт",
+  "createAccount": "Створити аккаунт",
+  "continueAsGuest": "Продовжити як гість",
+  "email": "Email",
+  "password": "Пароль",
+  "confirmPassword": "Підтвердити пароль",
+  "firstName": "Імʼя",
+  "lastName": "Прізвище",
+  "location": "Локація",
+  "chooseLocation": "Оберіть свою локацію (опціонально)",
+  "alreadyHaveAccount": "Вже маєте аккаунт?",
+  "forgotPassword": "Відновити пароль",
+  "resetPassword": "Відновити пароль",
+  "resetPasswordMessage": "Будь ласка, введіть електронну адресу, пов'язану з вашим обліковим записом і ми надішлемо ми надішлемо вам інструкції щодо зміни паролю.",
+  "notMember": "Ще не зареєстровані?",
+  "registerNow": "Реєстрація",
+  "sendEmail": "Надіслати листа",
+  "createNewPassword": "Створіть новий пароль",
+  "confirmNewPassword": "Змінити пароль"
+}

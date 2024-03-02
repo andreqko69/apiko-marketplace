@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { Text, View } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 
@@ -18,6 +19,7 @@ type NavigationProps = StackNavigationProp<
 >;
 
 const ResetPasswordScreen = () => {
+  const { t } = useTranslation();
   const { styles } = useStyles(stylesheet);
   const { navigate } = useNavigation<NavigationProps>();
   const [email, setEmail] = useState('');
@@ -37,10 +39,7 @@ const ResetPasswordScreen = () => {
 
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
-      <Text style={styles.text}>
-        Please enter the email associated with your account and we'll send an
-        email instructions to reset your password.
-      </Text>
+      <Text style={styles.text}>{t('resetPasswordMessage')}</Text>
       <View style={styles.inputContainer}>
         <InputText
           placeholder="Email"
@@ -49,7 +48,7 @@ const ResetPasswordScreen = () => {
           type={InputType.Email}
         />
       </View>
-      <ButtonPrimary onPress={handleSendEmailPress} text="Send email" />
+      <ButtonPrimary onPress={handleSendEmailPress} text={t('sendEmail')} />
     </SafeAreaView>
   );
 };

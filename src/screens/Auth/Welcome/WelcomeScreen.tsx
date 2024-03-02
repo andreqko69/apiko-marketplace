@@ -51,13 +51,13 @@ const WelcomeScreen = () => {
                 onPress={handleSignIn}
                 variation={ButtonVariation.Secondary}
                 size={ButtonSize.Large}
-                text={t('sign_in')}
+                text={t('signIn')}
               />
               <ButtonPrimary
                 onPress={handleCreateAccount}
                 variation={ButtonVariation.Primary}
                 size={ButtonSize.Large}
-                text={t('create_account')}
+                text={t('createAccount')}
               />
             </View>
             <View style={styles.guestContainer}>
@@ -65,7 +65,7 @@ const WelcomeScreen = () => {
                 onPress={() => {
                   console.log('You are guest!');
                 }}
-                text={t('continue_as_guest')}
+                text={t('continueAsGuest')}
               />
             </View>
           </View>

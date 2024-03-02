@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { Text, View } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 
 import InputText from '@components/InputText/InputText';
 import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
@@ -10,6 +11,7 @@ import { IconName } from '@components/Icon/Icon';
 import stylesheet from './CreateNewPasswordScreen.styles';
 
 const CreateNewPasswordScreen = () => {
+  const { t } = useTranslation();
   const { styles } = useStyles(stylesheet);
   const [passwordInputTypes, setPasswordInputType] = useState({
     passwordType: InputType.Password,
@@ -73,7 +75,7 @@ const CreateNewPasswordScreen = () => {
       </Text>
       <View style={styles.inputContainer}>
         <InputText
-          placeholder="Password"
+          placeholder={t('password')}
           value={inputState.password}
           onTextChange={handlePasswordChange}
           type={passwordInputTypes.passwordType}
@@ -81,7 +83,7 @@ const CreateNewPasswordScreen = () => {
           onIconPress={handlePasswordInputIconPress}
         />
         <InputText
-          placeholder="Confirm password"
+          placeholder={t('confirmPassword')}
           value={inputState.confirmPassword}
           onTextChange={handleConfirmPasswordChange}
           type={passwordInputTypes.confirmPasswordType}
@@ -91,7 +93,7 @@ const CreateNewPasswordScreen = () => {
       </View>
       <ButtonPrimary
         onPress={handleConfirmNewPassword}
-        text="Confirm new password"
+        text={t('confirmNewPassword')}
       />
     </SafeAreaView>
   );

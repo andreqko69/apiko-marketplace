@@ -3,7 +3,35 @@
     "title": "Hey! Welcome",
     "message": "Discover amazing products from sellers around the world, all in one place"
   },
-  "sign_in": "Sign in",
-  "create_account": "Create account",
-  "continue_as_guest": "Continue as a guest"
+  "errorMessages": {
+    "minLength_one": "{{fieldName}} must be at least {{count}} character long",
+    "minLength_other": "{{fieldName}} must be at least {{count}} characters long",
+
+    "maxLength_one": "{{fieldName}} must be at most {{count}} character long",
+    "maxLength_other": "{{fieldName}} must be at most {{count}} characters long",
+
+    "noNumericOrSpecialCharacters": "{{fieldName}} must not contain any numeric or special characters",
+    "invalidValue": "Please, enter a valid {{fieldName}}",
+    "fieldIsMandatory": "This field is mandatory"
+  },
+  "signIn": "Sign in",
+  "signUp": "Sign up",
+  "createAccount": "Create account",
+  "continueAsGuest": "Continue as a guest",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm password",
+  "firstName": "First name",
+  "lastName": "Last name",
+  "location": "Location",
+  "chooseLocation": "Choose your location (optional)",
+  "alreadyHaveAccount": "Already have an account?",
+  "forgotPassword": "Forgot password",
+  "resetPassword": "Reset password",
+  "resetPasswordMessage": "Please enter the email associated with your account and we'll send an email instructions to reset your password.",
+  "notMember": "Not a member?",
+  "registerNow": "Register now",
+  "sendEmail": "Send email",
+  "createNewPassword": "Create new password",
+  "confirmNewPassword": "Confirm new password"
 }

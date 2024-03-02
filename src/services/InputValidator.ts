@@ -1,10 +1,16 @@
-import capitalize from '@utils/capitalize';
+import i18next from 'i18next';
+import { TranslationContext } from '../../i18n/constants';
+
+type TranslationParams = {
+  context?: TranslationContext;
+};
 
 type ValidationParams = {
   fieldName: string;
   value: string;
   isRequired?: boolean;
   skipEmptyString?: boolean;
+  translationParams?: TranslationParams;
 };
 
 type ValidationResult = {
@@ -31,10 +37,11 @@ class InputValidator {
     value,
     minLength,
     isRequired,
+    translationParams,
   }: ValidationParams & { minLength: number }) => {
     const trimmedValue = value.trim();
     const trimmedValueLength = trimmedValue.length;
-    // skip empty values and validate if values are not empty
+    // skip empty values if not required
     const isValid =
       trimmedValueLength === 0 && !isRequired
         ? true
@@ -44,9 +51,11 @@ class InputValidator {
       isValid,
       errorMessage: isValid
         ? undefined
-        : `${capitalize(fieldName)} must be at least ${
-            this.nameMinLength
-          } characters long`,
+        : i18next.t('errorMessages.minLength', {
+            fieldName,
+            count: minLength,
+            ...translationParams,
+          }),
     };
   };
 
@@ -64,6 +73,7 @@ class InputValidator {
     fieldName,
     value,
     maxLength,
+    translationParams,
   }: ValidationParams & { maxLength: number }) => {
     const isValid = value.trim().length <= maxLength;
 
@@ -71,9 +81,11 @@ class InputValidator {
       isValid,
       errorMessage: isValid
         ? undefined
-        : `${capitalize(fieldName.toLowerCase())} must be at most ${
-            this.nameMaxLength
-          } characters long`,
+        : i18next.t('errorMessages.maxLength', {
+            fieldName,
+            count: maxLength,
+            ...translationParams,
+          }),
     };
   };
 
@@ -91,6 +103,7 @@ class InputValidator {
     fieldName,
     value,
     isRequired,
+    translationParams,
   }: ValidationParams) => {
     // prevent running regex on empty strings if not required
     const isValid =
@@ -100,23 +113,31 @@ class InputValidator {
       isValid,
       errorMessage: isValid
         ? undefined
-        : `${capitalize(
-            fieldName
-          )} shouldn't contain numbers or special characters`,
+        : i18next.t('errorMessages.noNumericOrSpecialCharacters', {
+            fieldName,
+            ...translationParams,
+          }),
     };
   };
 
   /**
    * Validates an email against a regular expression
    */
-  private emailRegexValidator = ({ fieldName, value }: ValidationParams) => {
+  private emailRegexValidator = ({
+    fieldName,
+    value,
+    translationParams,
+  }: ValidationParams) => {
     const isValid = this.emailRegex.test(value);
 
     return {
       isValid,
       errorMessage: isValid
         ? undefined
-        : `Please, enter correct ${fieldName.toLowerCase()}`,
+        : i18next.t('errorMessages.invalidValue', {
+            fieldName: fieldName.toLowerCase(),
+            ...translationParams,
+          }),
     };
   };
 
@@ -129,7 +150,9 @@ class InputValidator {
 
     return {
       isValid,
-      errorMessage: isValid ? undefined : 'This field is mandatory',
+      errorMessage: isValid
+        ? undefined
+        : i18next.t('errorMessages.fieldIsMandatory'),
     };
   };
 
@@ -178,12 +201,21 @@ class InputValidator {
    */
   private runValidationFlow({
     validators,
+    translationParams,
     ...params
   }: ValidationParams & {
     validators: Array<(p: ValidationParams) => ValidationResult>;
   }) {
+    const validatorParams = {
+      ...params,
+      translationParams: {
+        // use male as a default context
+        context: translationParams?.context ?? TranslationContext.Male,
+      },
+    };
+
     for (const validator of validators) {
-      const { isValid, errorMessage } = validator(params);
+      const { isValid, errorMessage } = validator(validatorParams);
       // return early if the value is invalid
       if (!isValid) {
         return {

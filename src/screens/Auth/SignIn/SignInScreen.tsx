@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 
@@ -25,8 +26,10 @@ type NavigationProps = StackNavigationProp<
 >;
 
 const SignInScreen = () => {
-  const { navigate } = useNavigation<NavigationProps>();
+  const { t } = useTranslation();
   const { styles } = useStyles(stylesheet);
+  const { navigate } = useNavigation<NavigationProps>();
+
   const [passwordInputType, setPasswordInputType] = useState(
     InputType.Password
   );
@@ -79,13 +82,13 @@ const SignInScreen = () => {
         <View>
           <View style={styles.inputContainer}>
             <InputText
-              placeholder="Email"
+              placeholder={t('email')}
               value={inputState.email}
               onTextChange={handleEmailChange}
               type={InputType.Email}
             />
             <InputText
-              placeholder="Password"
+              placeholder={t('password')}
               value={inputState.password}
               onTextChange={handlePasswordChange}
               type={passwordInputType}
@@ -96,24 +99,27 @@ const SignInScreen = () => {
           <View style={styles.forgotPasswordContainer}>
             <ButtonLink
               onPress={handleForgotPasswordPress}
-              text="Forgot password"
+              text={t('forgotPassword')}
             />
           </View>
           <ButtonPrimary
             onPress={handleSignIn}
-            text="Sign in"
+            text={t('signIn')}
             variation={ButtonVariation.Primary}
             size={ButtonSize.Large}
           />
           <View style={styles.registerNowContainer}>
-            <Text style={styles.registerNowText}>Not a member? </Text>
-            <ButtonLink onPress={handleRegisterNowPress} text="Register now" />
+            <Text style={styles.registerNowText}>{t('notMember')} </Text>
+            <ButtonLink
+              onPress={handleRegisterNowPress}
+              text={t('registerNow')}
+            />
           </View>
         </View>
         <View style={styles.guestContainer}>
           <ButtonLink
             onPress={handleContinueAsGuest}
-            text="Continue as a guest"
+            text={t('continueAsGuest')}
           />
         </View>
       </CustomKeyboardAvoidingView>
