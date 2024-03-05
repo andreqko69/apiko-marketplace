@@ -23,6 +23,8 @@ class InputValidator {
   private nameMaxLength = 40;
   private locationMinLength = 2;
   private locationMaxLength = 100;
+  private passwordMinLength = 6;
+  private passwordMaxLength = 100;
   // allows everything except numbers and special characters
   private nameRegex =
     /^[a-zA-Z\xC0-\uFFFF]+([ \-']{0,1}[a-zA-Z\xC0-\uFFFF]+){0,2}[.]{0,1}$/;
@@ -197,25 +199,30 @@ class InputValidator {
   };
 
   /**
+   * Validates a password
+   */
+  public validatePassword = (params: ValidationParams) => {
+    return this.runValidationFlow({
+      ...params,
+      validators: [
+        this.requiredValidator,
+        this.getMinLengthValidator(this.passwordMinLength),
+        this.getMaxLengthValidator(this.passwordMaxLength),
+      ],
+    });
+  };
+
+  /**
    * Validates a provided value against a set of validators
    */
   private runValidationFlow({
     validators,
-    translationParams,
     ...params
   }: ValidationParams & {
     validators: Array<(p: ValidationParams) => ValidationResult>;
   }) {
-    const validatorParams = {
-      ...params,
-      translationParams: {
-        // use male as a default context
-        context: translationParams?.context ?? TranslationContext.Male,
-      },
-    };
-
     for (const validator of validators) {
-      const { isValid, errorMessage } = validator(validatorParams);
+      const { isValid, errorMessage } = validator(params);
       // return early if the value is invalid
       if (!isValid) {
         return {

@@ -12,7 +12,8 @@
 
     "noNumericOrSpecialCharacters": "{{fieldName}} must not contain any numeric or special characters",
     "invalidValue": "Please, enter a valid {{fieldName}}",
-    "fieldIsMandatory": "This field is mandatory"
+    "fieldIsMandatory": "This field is mandatory",
+    "passwordsDoNotMatch": "Passwords do not match"
   },
   "signIn": "Sign in",
   "signUp": "Sign up",

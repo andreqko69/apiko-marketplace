@@ -28,6 +28,7 @@ module.exports = {
           '@utils': './src/utils',
           '@assets': './src/assets',
           '@services': './src/services',
+          '@lib': './src/lib',
         },
       },
     ],

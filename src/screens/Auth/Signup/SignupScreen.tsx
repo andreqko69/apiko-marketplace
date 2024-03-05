@@ -18,13 +18,13 @@ import {
   ButtonSize,
   ButtonVariation,
 } from '@components/ButtonPrimary/constants';
-import { ModalName } from '@modals/constants';
 import type { RootStackParamList } from '@navigation/RootNavigator/RootNavigator.types';
 import inputValidator from '@services/InputValidator';
 import { InputType } from '@components/InputText/constants';
 
 import stylesheet from './SignUpScreen.styles';
 import { TranslationContext } from '../../../../i18n/constants';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 
 type NavigationProps = CompositeScreenProps<
   StackScreenProps<AuthStackParamList, ScreenName.SignUp>,
@@ -36,6 +36,15 @@ type FormInputState = {
   errorMessage?: string;
 };
 
+enum InputFieldName {
+  FirstName = 'firstName',
+  LastName = 'lastName',
+  Email = 'email',
+  Location = 'location',
+  Password = 'password',
+  ConfirmPassword = 'confirmPassword',
+}
+
 const defaultFormValue: FormInputState = {
   value: '',
 };
@@ -45,10 +54,12 @@ const SignupScreen = () => {
   const { styles } = useStyles(stylesheet);
   const { navigate } = useNavigation<NavigationProps['navigation']>();
   const [formState, setFormState] = useState({
-    firstName: defaultFormValue,
-    lastName: defaultFormValue,
-    email: defaultFormValue,
-    location: defaultFormValue,
+    [InputFieldName.FirstName]: defaultFormValue,
+    [InputFieldName.LastName]: defaultFormValue,
+    [InputFieldName.Email]: defaultFormValue,
+    [InputFieldName.Location]: defaultFormValue,
+    [InputFieldName.Password]: defaultFormValue,
+    [InputFieldName.ConfirmPassword]: defaultFormValue,
   });
 
   const validateFirstName = useCallback(
@@ -79,6 +90,9 @@ const SignupScreen = () => {
         fieldName: t('email'),
         value,
         isRequired: true,
+        translationParams: {
+          context: TranslationContext.Male,
+        },
       });
     },
     [t]
@@ -97,33 +111,59 @@ const SignupScreen = () => {
     [t]
   );
 
-  const validateValues = useCallback((): boolean => {
-    const { isValid: isFirstNameValid } = validateFirstName(
-      formState.firstName.value
-    );
-    const { isValid: isLastNameValid } = validateLastName(
-      formState.lastName.value
-    );
-    const { isValid: isEmailNameValid } = validateEmail(formState.email.value);
-    const { isValid: isLocationValid } = validateLocation(
-      formState.location.value
-    );
+  const validatePassword = useCallback(
+    (value: string) => {
+      return inputValidator.validatePassword({
+        fieldName: t('password'),
+        value,
+        translationParams: {
+          context: TranslationContext.Male,
+        },
+      });
+    },
+    [t]
+  );
 
-    return (
-      isFirstNameValid && isLastNameValid && isEmailNameValid && isLocationValid
+  const validateConfirmPassword = useCallback(
+    (value: string) => {
+      return inputValidator.validateLocation({
+        fieldName: t('confirmPassword'),
+        value,
+        translationParams: {
+          context: TranslationContext.Male,
+        },
+      });
+    },
+    [t]
+  );
+
+  const isSubmitDisabled = useMemo((): boolean => {
+    const fieldNameToValidatorMap = {
+      [InputFieldName.FirstName]: validateFirstName,
+      [InputFieldName.LastName]: validateLastName,
+      [InputFieldName.Email]: validateEmail,
+      [InputFieldName.Location]: validateLocation,
+      [InputFieldName.Password]: validatePassword,
+      [InputFieldName.ConfirmPassword]: validateConfirmPassword,
+    };
+
+    return Object.entries(fieldNameToValidatorMap).some(
+      ([fieldName, validator]) => {
+        const value = formState[fieldName as InputFieldName].value;
+        const { isValid } = validator(value);
+
+        return !isValid;
+      }
     );
   }, [
-    formState.email.value,
-    formState.firstName.value,
-    formState.lastName.value,
-    formState.location.value,
-    validateEmail,
+    formState,
     validateFirstName,
     validateLastName,
+    validateEmail,
     validateLocation,
+    validatePassword,
+    validateConfirmPassword,
   ]);
-
-  const isSubmitDisabled = useMemo(() => !validateValues(), [validateValues]);
 
   const handleFirstNameChange = useCallback(
     (newValue: string) => {
@@ -131,7 +171,7 @@ const SignupScreen = () => {
 
       setFormState((prevState) => ({
         ...prevState,
-        firstName: { value: newValue, errorMessage },
+        [InputFieldName.FirstName]: { value: newValue, errorMessage },
       }));
     },
     [validateFirstName]
@@ -143,7 +183,7 @@ const SignupScreen = () => {
 
       setFormState((prevState) => ({
         ...prevState,
-        lastName: { value: newValue, errorMessage },
+        [InputFieldName.LastName]: { value: newValue, errorMessage },
       }));
     },
     [validateLastName]
@@ -155,7 +195,7 @@ const SignupScreen = () => {
 
       setFormState((prevState) => ({
         ...prevState,
-        email: { value: newValue, errorMessage },
+        [InputFieldName.Email]: { value: newValue, errorMessage },
       }));
     },
     [validateEmail]
@@ -167,73 +207,104 @@ const SignupScreen = () => {
 
       setFormState((prevState) => ({
         ...prevState,
-        location: { value: newValue, errorMessage },
+        [InputFieldName.Location]: { value: newValue, errorMessage },
       }));
     },
     [validateLocation]
+  );
+
+  const handlePasswordChange = useCallback(
+    (newValue: string) => {
+      const { errorMessage } = validatePassword(newValue);
+
+      setFormState((prevState) => ({
+        ...prevState,
+        [InputFieldName.Password]: { value: newValue, errorMessage },
+      }));
+    },
+    [validatePassword]
+  );
+
+  const handleConfirmPasswordChange = useCallback(
+    (newValue: string) => {
+      const errorMessage =
+        newValue !== formState.password.value
+          ? t('errorMessages.passwordsDoNotMatch')
+          : '';
+
+      setFormState((prevState) => ({
+        ...prevState,
+        [InputFieldName.ConfirmPassword]: { value: newValue, errorMessage },
+      }));
+    },
+    [formState.password.value, t]
   );
 
   const handleSignInPress = () => {
     navigate(ScreenName.SignIn);
   };
 
-  const handleSignUpPress = async () => {
-    await new Promise((resolve) =>
-      setTimeout(() => {
-        navigate(ModalName.MessageModal, {
-          title: 'Success',
-          message:
-            'You have your account now.\n Check your email to confirm email address.',
-          primaryButtonText: 'Ok',
-          onPrimaryButtonPress: () => navigate(ScreenName.Welcome),
-        });
-        resolve(formState);
-      }, 1000)
-    );
-  };
+  const handleSignUpPress = async () => {};
 
-  const { firstName, lastName, email, location } = formState;
+  const { firstName, lastName, email, location, password, confirmPassword } =
+    formState;
 
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
-      <View style={styles.inputContainer}>
-        <InputText
-          placeholder={t('firstName')}
-          value={firstName.value}
-          errorMessage={firstName.errorMessage}
-          onTextChange={handleFirstNameChange}
+      <KeyboardAwareScrollView style={styles.scrollContainer}>
+        <View style={styles.inputContainer}>
+          <InputText
+            placeholder={t('firstName')}
+            value={firstName.value}
+            errorMessage={firstName.errorMessage}
+            onTextChange={handleFirstNameChange}
+          />
+          <InputText
+            placeholder={t('lastName')}
+            value={lastName.value}
+            errorMessage={lastName.errorMessage}
+            onTextChange={handleLastNameChange}
+          />
+          <InputText
+            placeholder={t('email')}
+            value={email.value}
+            errorMessage={email.errorMessage}
+            onTextChange={handleEmailChange}
+            type={InputType.Email}
+          />
+          <InputText
+            placeholder={t('chooseLocation')}
+            value={location.value}
+            errorMessage={location.errorMessage}
+            onTextChange={handleLocationChange}
+          />
+          <InputText
+            placeholder={t('password')}
+            value={password.value}
+            errorMessage={password.errorMessage}
+            onTextChange={handlePasswordChange}
+            type={InputType.Password}
+          />
+          <InputText
+            placeholder={t('confirmPassword')}
+            value={confirmPassword.value}
+            errorMessage={confirmPassword.errorMessage}
+            onTextChange={handleConfirmPasswordChange}
+            type={InputType.Password}
+          />
+        </View>
+        <ButtonPrimary
+          disabled={isSubmitDisabled}
+          onPress={handleSignUpPress}
+          text={t('signUp')}
+          variation={ButtonVariation.Primary}
+          size={ButtonSize.Large}
         />
-        <InputText
-          placeholder={t('lastName')}
-          value={lastName.value}
-          errorMessage={lastName.errorMessage}
-          onTextChange={handleLastNameChange}
-        />
-        <InputText
-          placeholder={t('email')}
-          value={email.value}
-          errorMessage={email.errorMessage}
-          onTextChange={handleEmailChange}
-          type={InputType.Email}
-        />
-        <InputText
-          placeholder={t('chooseLocation')}
-          value={location.value}
-          errorMessage={location.errorMessage}
-          onTextChange={handleLocationChange}
-        />
-      </View>
-      <ButtonPrimary
-        disabled={isSubmitDisabled}
-        onPress={handleSignUpPress}
-        text={t('signUp')}
-        variation={ButtonVariation.Primary}
-        size={ButtonSize.Large}
-      />
-      <View style={styles.signInContainer}>
-        <Text style={styles.signInText}>{t('alreadyHaveAccount')}</Text>
-        <ButtonLink onPress={handleSignInPress} text={t('signIn')} />
-      </View>
+        <View style={styles.signInContainer}>
+          <Text style={styles.signInText}>{t('alreadyHaveAccount')}</Text>
+          <ButtonLink onPress={handleSignInPress} text={t('signIn')} />
+        </View>
+      </KeyboardAwareScrollView>
     </SafeAreaView>
   );
 };

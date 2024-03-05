@@ -4,7 +4,13 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { isAndroid } from '@utils/reactNative';
 
-function CustomKeyboardAvoidingView({ children, style }: any) {
+function CustomKeyboardAvoidingView({
+  children,
+  style,
+}: {
+  children: React.ReactNode;
+  style?: Record<string, unknown>;
+}) {
   const insets = useSafeAreaInsets();
   const [bottomPadding, setBottomPadding] = useState(insets.bottom);
   const [topPadding, setTopPadding] = useState(insets.top);

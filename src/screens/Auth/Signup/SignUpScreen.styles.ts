@@ -4,8 +4,11 @@ const stylesheet = createStyleSheet((theme) => ({
   container: {
     flex: 1,
     backgroundColor: theme.palette.background.primary,
-    paddingHorizontal: theme.spaces.md,
     paddingTop: theme.spaces.xsm,
+  },
+  scrollContainer: {
+    flex: 1,
+    paddingHorizontal: theme.spaces.md,
   },
   inputContainer: {
     gap: theme.spaces.xsm,

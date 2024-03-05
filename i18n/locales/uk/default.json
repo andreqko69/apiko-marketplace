@@ -4,12 +4,16 @@
     "message": "Відкрийте для себе дивовижні товари від продавців з усього світу в одному місці"
   },
   "errorMessages": {
-    "minLength_male_one": "{{fieldName}} повинно бути мінімум {{count}} символ довжиною",
+    "minLength_one": "{{fieldName}} повинно бути мінімум {{count}} символ довжиною",
+    "minLength_male_one": "{{fieldName}} повинен бути мінімум {{count}} символ довжиною",
     "minLength_female_one": "{{fieldName}} повинна бути мінімум {{count}} символ довжиною",
-    "minLength_male_few": "{{fieldName}} повинно бути мінімум {{count}} символи довжиною",
+    "minLength_few": "{{fieldName}} повинно бути мінімум {{count}} символи довжиною",
+    "minLength_male_few": "{{fieldName}} повинен бути мінімум {{count}} символи довжиною",
     "minLength_female_few": "{{fieldName}} повинна бути мінімум {{count}} символи довжиною",
-    "minLength_male_many": "{{fieldName}} повинно бути мінімум {{count}} символів довжиною",
+    "minLength_many": "{{fieldName}} повинно бути мінімум {{count}} символів довжиною",
+    "minLength_male_many": "{{fieldName}} повинен бути мінімум {{count}} символів довжиною",
     "minLength_female_many": "{{fieldName}} повинна бути мінімум {{count}} символів довжиною",
+    "minLength_other": "$t(errorMessages.minLength_many)",
     "minLength_male_other": "$t(errorMessages.minLength_male_many)",
     "minLength_female_other": "$t(errorMessages.minLength_female_many)",
 
@@ -28,7 +32,8 @@
     "invalidValue_male": "Будь ласка, введіть правильний {{fieldName}}",
     "invalidValue_female": "Будь ласка, введіть правильну {{fieldName}}",
 
-    "fieldIsMandatory": "Це поле є обовʼязковим"
+    "fieldIsMandatory": "Це поле є обовʼязковим",
+    "passwordsDoNotMatch": "Паролі не співпадають"
   },
   "signIn": "Вхід",
   "signUp": "Створити аккаунт",
@@ -36,7 +41,7 @@
   "continueAsGuest": "Продовжити як гість",
   "email": "Email",
   "password": "Пароль",
-  "confirmPassword": "Підтвердити пароль",
+  "confirmPassword": "Підтвердіть пароль",
   "firstName": "Імʼя",
   "lastName": "Прізвище",
   "location": "Локація",
