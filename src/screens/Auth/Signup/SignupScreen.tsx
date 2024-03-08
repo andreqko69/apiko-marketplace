@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 import {
@@ -24,7 +25,6 @@ import { InputType } from '@components/InputText/constants';
 
 import stylesheet from './SignUpScreen.styles';
 import { TranslationContext } from '../../../../i18n/constants';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 
 type NavigationProps = CompositeScreenProps<
   StackScreenProps<AuthStackParamList, ScreenName.SignUp>,
