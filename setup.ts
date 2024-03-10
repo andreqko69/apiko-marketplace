@@ -11,6 +11,7 @@ LogBox.ignoreLogs([
   'i18next is already initialized. You should call init just once!',
 ]);
 
+// enable scroll avoidance view for iOS
 if (!isAndroid) {
   KeyboardManager.setEnable(true);
   KeyboardManager.setKeyboardDistanceFromTextField(25);
