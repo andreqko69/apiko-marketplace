@@ -7,9 +7,15 @@ const stylesheet = createStyleSheet((theme) => ({
     paddingHorizontal: theme.spaces.md,
     paddingTop: theme.spaces.xsm,
   },
-  contentContainer: {
+  keyboardAvoidingView: {
+    flex: 1,
+  },
+  content: {
     flex: 1,
     justifyContent: 'space-between',
+  },
+  form: {
+    flex: 1,
   },
   inputContainer: {
     gap: theme.spaces.xsm,

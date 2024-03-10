@@ -1,7 +1,6 @@
 import React, { memo, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
-import { TextInput } from 'react-native-gesture-handler';
 
 import stylesheet from './InputText.styles';
 import { InputType } from './constants';

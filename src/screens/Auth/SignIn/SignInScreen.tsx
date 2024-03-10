@@ -14,10 +14,10 @@ import InputText from '@components/InputText/InputText';
 import ButtonLink from '@components/ButtonLink/ButtonLink';
 import { InputType } from '@components/InputText/constants';
 import ButtonPrimary from '@components/ButtonPrimary/ButtonPrimary';
-import CustomKeyboardAvoidingView from '@components/CustomKeyboardAvoidingView/CustomKeyboardAvoidingView';
 import { IconName } from '@components/Icon/Icon';
 import { ScreenName } from '@screens/constants';
 import type { AuthStackParamList } from '@navigation/AuthNavigator/AuthNavigator.types';
+import CustomKeyboardAvoidingView from '@components/CustomKeyboardAvoidingView/CustomKeyboardAvoidingView';
 import stylesheet from './SignInScreen.styles';
 
 type NavigationProps = StackNavigationProp<
@@ -78,8 +78,8 @@ const SignInScreen = () => {
 
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
-      <CustomKeyboardAvoidingView style={styles.contentContainer}>
-        <View>
+      <CustomKeyboardAvoidingView style={styles.content}>
+        <View style={styles.form}>
           <View style={styles.inputContainer}>
             <InputText
               placeholder={t('email')}

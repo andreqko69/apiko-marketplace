@@ -4,7 +4,7 @@ const stylesheet = createStyleSheet((theme) => ({
   container: {
     flex: 1,
     backgroundColor: theme.palette.background.primary,
-    paddingTop: theme.spaces.xsm,
+    paddingVertical: theme.spaces.xsm,
   },
   scrollContainer: {
     flex: 1,

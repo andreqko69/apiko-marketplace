@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 import {
@@ -251,7 +250,7 @@ const SignupScreen = () => {
 
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
-      <KeyboardAwareScrollView style={styles.scrollContainer}>
+      <ScrollView style={styles.scrollContainer}>
         <View style={styles.inputContainer}>
           <InputText
             placeholder={t('firstName')}
@@ -304,7 +303,7 @@ const SignupScreen = () => {
           <Text style={styles.signInText}>{t('alreadyHaveAccount')}</Text>
           <ButtonLink onPress={handleSignInPress} text={t('signIn')} />
         </View>
-      </KeyboardAwareScrollView>
+      </ScrollView>
     </SafeAreaView>
   );
 };
