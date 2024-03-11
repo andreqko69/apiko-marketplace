@@ -48,22 +48,29 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 /* Functions end */
 
-
 /* Triggers start */
+
+/* Triggers user_profile start */
 
 CREATE TRIGGER on_user_profile_updated
 AFTER UPDATE ON user_profile
 FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 
+/* Triggers user_profile end */
+
+/* Triggers users start */
+
 CREATE TRIGGER on_auth_user_created
 AFTER INSERT ON auth.users
 FOR EACH ROW EXECUTE FUNCTION handle_new_user();
+
+/* Triggers users end */
 
 /* Triggers end */
 
 /* Policies start */
 
-/* user_profile start */
+/* Policies user_profile start */
 
 CREATE POLICY "Profiles are viewable by everyone." ON user_profile
     FOR SELECT USING (true);
@@ -74,6 +81,6 @@ CREATE POLICY "Users can insert their own profile." ON user_profile
 CREATE POLICY "Users can update own profile." ON user_profile
     FOR UPDATE USING (auth.uid() = id);
 
-/* user_profile end */
+/* Policies user_profile end */
 
 /* Policies end */
