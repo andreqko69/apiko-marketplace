@@ -5,18 +5,19 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 import useStore from '@stores/useStore';
-import AuthNavigator from '../AuthNavigator/AuthNavigator';
-import AppNavigator from '../AppNavigator/AppNavigator';
 import { ScreenName } from '@screens/constants';
 import { ModalName } from '@modals/constants';
 import MessageModal from '@modals/MessageModal/MessageModal';
+
+import AuthNavigator from '../AuthNavigator/AuthNavigator';
+import AppNavigator from '../AppNavigator/AppNavigator';
 import type { RootStackParamList } from './RootNavigator.types';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
   const store = useStore();
-  const isAuthenticated = store.use.isAuthenticated();
+  const userId = store.use.userId();
 
   return (
     <SafeAreaProvider>
@@ -25,13 +26,15 @@ const RootNavigator = () => {
           setTimeout(() => {
             BootSplash.hide({ fade: true });
           }, 2000);
-        }}>
+        }}
+      >
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
             gestureEnabled: false,
-          }}>
-          {isAuthenticated ? (
+          }}
+        >
+          {userId ? (
             <Stack.Screen
               name={ScreenName.AppNavigator}
               component={AppNavigator}

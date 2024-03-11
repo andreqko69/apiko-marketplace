@@ -33,8 +33,12 @@
     "invalidValue_female": "Будь ласка, введіть правильну {{fieldName}}",
 
     "fieldIsMandatory": "Це поле є обовʼязковим",
-    "passwordsDoNotMatch": "Паролі не співпадають"
+    "passwordsDoNotMatch": "Паролі не співпадають",
+    "oops": "Ой...",
+    "userAlreadyRegistered": "Користувач з таким email вже зареєстрований",
+    "invalidLoginCredentials": "Неправильний email або пароль"
   },
+  "ok": "Ок",
   "signIn": "Вхід",
   "signUp": "Створити аккаунт",
   "createAccount": "Створити аккаунт",

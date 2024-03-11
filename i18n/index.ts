@@ -4,13 +4,12 @@ import 'intl-pluralrules';
 
 import { defaultNamespace, Locale } from './constants';
 import resources from './resources';
+import { isAndroid } from 'utils/reactNative';
 
 i18next.use(initReactI18next).init({
   debug: true,
   ns: [defaultNamespace],
   defaultNS: defaultNamespace,
-  fallbackLng: Locale.Ukrainian,
+  fallbackLng: isAndroid ? Locale.Ukrainian : Locale.English,
   resources,
 });
-
-export default i18next;

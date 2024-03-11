@@ -3,8 +3,11 @@ import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
-import type { StackNavigationProp } from '@react-navigation/stack';
+import {
+  type CompositeScreenProps,
+  useNavigation,
+} from '@react-navigation/native';
+import type { StackScreenProps } from '@react-navigation/stack';
 
 import {
   ButtonSize,
@@ -19,16 +22,20 @@ import { ScreenName } from '@screens/constants';
 import type { AuthStackParamList } from '@navigation/AuthNavigator/AuthNavigator.types';
 import CustomKeyboardAvoidingView from '@components/CustomKeyboardAvoidingView/CustomKeyboardAvoidingView';
 import stylesheet from './SignInScreen.styles';
+import supabase from '@lib/supabase';
+import { ModalName } from '@modals/constants';
+import { getTranslatedSupabaseErrorMessage } from '@lib/supabase/helpers';
+import type { RootStackParamList } from '@navigation/RootNavigator/RootNavigator.types';
 
-type NavigationProps = StackNavigationProp<
-  AuthStackParamList,
-  ScreenName.SignIn
+type NavigationProps = CompositeScreenProps<
+  StackScreenProps<AuthStackParamList, ScreenName.SignIn>,
+  StackScreenProps<RootStackParamList>
 >;
 
 const SignInScreen = () => {
   const { t } = useTranslation();
   const { styles } = useStyles(stylesheet);
-  const { navigate } = useNavigation<NavigationProps>();
+  const { navigate } = useNavigation<NavigationProps['navigation']>();
 
   const [passwordInputType, setPasswordInputType] = useState(
     InputType.Password
@@ -53,12 +60,21 @@ const SignInScreen = () => {
   }, []);
 
   const handleSignIn = async () => {
-    await new Promise((resolve) =>
-      setTimeout(() => {
-        console.log('Input state:', inputState);
-        resolve(inputState);
-      }, 1000)
-    );
+    const { error } = await supabase.auth.signInWithPassword({
+      email: inputState.email,
+      password: inputState.password,
+    });
+
+    if (error) {
+      navigate(ModalName.MessageModal, {
+        title: t('errorMessages.oops'),
+        message: getTranslatedSupabaseErrorMessage(error.message),
+        primaryButtonText: t('ok'),
+        onPrimaryButtonPress: () => {
+          navigate(ScreenName.SignIn);
+        },
+      });
+    }
   };
 
   const handleForgotPasswordPress = () => {

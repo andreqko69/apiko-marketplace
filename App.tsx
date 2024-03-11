@@ -1,9 +1,13 @@
 import React, { StrictMode } from 'react';
 
 import RootNavigator from '@navigation/RootNavigator/RootNavigator';
-import './setup';
+import useGlobalSubscriptions from 'hooks/useGlobalSubscriptions';
+import useInitialSetup from 'hooks/useInitialSetup';
 
 function App(): React.JSX.Element {
+  useInitialSetup();
+  useGlobalSubscriptions();
+
   return (
     <StrictMode>
       <RootNavigator />

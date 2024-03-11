@@ -1,13 +1,18 @@
 import { StateCreator } from 'zustand';
+import type { UserProfile } from '@lib/supabase/supabase.types';
 
 export interface AuthenticationState {
-  isAuthenticated: boolean;
-  setIsAuthenticated: (isAuthenticated: boolean) => void;
+  userId: string | null;
+  setUserId: (userId: string | null) => void;
+  userProfile: UserProfile | null;
+  setUserProfile: (userProfile: UserProfile | null) => void;
 }
 
 const createAuthStore: StateCreator<AuthenticationState> = (set) => ({
-  isAuthenticated: false,
-  setIsAuthenticated: (isAuthenticated: boolean) => set({ isAuthenticated }),
+  userId: null,
+  setUserId: (userId: string | null) => set({ userId }),
+  userProfile: null,
+  setUserProfile: (userProfile: UserProfile | null) => set({ userProfile }),
 });
 
 export default createAuthStore;

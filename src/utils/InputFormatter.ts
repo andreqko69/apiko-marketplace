@@ -1,6 +1,6 @@
-import capitalize from '@utils/capitalize';
+import capitalize from './capitalize';
 
-export class InputFormatter {
+class InputFormatter {
   public formatName(name: string) {
     return capitalize(name.trim().toLowerCase());
   }

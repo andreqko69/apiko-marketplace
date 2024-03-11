@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand';
-import { Theme } from 'constants/user-settings.ts';
+import { Theme } from '@constants/user-settings';
 
 export interface SettingsState {
   theme: Theme;

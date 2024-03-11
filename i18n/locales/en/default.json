@@ -13,8 +13,12 @@
     "noNumericOrSpecialCharacters": "{{fieldName}} must not contain any numeric or special characters",
     "invalidValue": "Please, enter a valid {{fieldName}}",
     "fieldIsMandatory": "This field is mandatory",
-    "passwordsDoNotMatch": "Passwords do not match"
+    "passwordsDoNotMatch": "Passwords do not match",
+    "oops": "Ooops...",
+    "userAlreadyRegistered": "User already exists",
+    "invalidLoginCredentials": "Invalid login credentials"
   },
+  "ok": "Ok",
   "signIn": "Sign in",
   "signUp": "Sign up",
   "createAccount": "Create account",

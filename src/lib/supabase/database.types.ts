@@ -34,39 +34,13 @@ export type Database = {
   };
   public: {
     Tables: {
-      countries: {
-        Row: {
-          continent: Database['public']['Enums']['continents'] | null;
-          id: number;
-          iso2: string;
-          iso3: string | null;
-          local_name: string | null;
-          name: string | null;
-        };
-        Insert: {
-          continent?: Database['public']['Enums']['continents'] | null;
-          id?: number;
-          iso2: string;
-          iso3?: string | null;
-          local_name?: string | null;
-          name?: string | null;
-        };
-        Update: {
-          continent?: Database['public']['Enums']['continents'] | null;
-          id?: number;
-          iso2?: string;
-          iso3?: string | null;
-          local_name?: string | null;
-          name?: string | null;
-        };
-        Relationships: [];
-      };
-      user_profiles: {
+      user_profile: {
         Row: {
           created_at: string;
           first_name: string;
           id: string;
           last_name: string;
+          updated_at: string;
           user_id: string;
         };
         Insert: {
@@ -74,6 +48,7 @@ export type Database = {
           first_name: string;
           id?: string;
           last_name: string;
+          updated_at?: string;
           user_id: string;
         };
         Update: {
@@ -81,13 +56,14 @@ export type Database = {
           first_name?: string;
           id?: string;
           last_name?: string;
+          updated_at?: string;
           user_id?: string;
         };
         Relationships: [
           {
-            foreignKeyName: 'user_profiles_user_id_fkey';
+            foreignKeyName: 'user_profile_user_id_fkey';
             columns: ['user_id'];
-            isOneToOne: false;
+            isOneToOne: true;
             referencedRelation: 'users';
             referencedColumns: ['id'];
           }
@@ -101,14 +77,7 @@ export type Database = {
       [_ in never]: never;
     };
     Enums: {
-      continents:
-        | 'Africa'
-        | 'Antarctica'
-        | 'Asia'
-        | 'Europe'
-        | 'Oceania'
-        | 'North America'
-        | 'South America';
+      [_ in never]: never;
     };
     CompositeTypes: {
       [_ in never]: never;

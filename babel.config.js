@@ -29,6 +29,7 @@ module.exports = {
           '@assets': './src/assets',
           '@services': './src/services',
           '@lib': './src/lib',
+          '@localization': './i18n',
         },
       },
     ],

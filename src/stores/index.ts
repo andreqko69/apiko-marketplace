@@ -1,9 +1,9 @@
 import { create } from 'zustand';
 
-import createAuthStore, { AuthenticationState } from './authStore/authStore.ts';
+import createAuthStore, { AuthenticationState } from './authStore/authStore';
 import createSettingsStore, {
   SettingsState,
-} from './settingsStore/settingsStore.ts';
+} from './settingsStore/settingsStore';
 
 const useCombinedStore = create<AuthenticationState & SettingsState>()(
   (...params) => ({

@@ -4,5 +4,7 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-import-type-side-effects': 'error',
     'prettier/prettier': ['error', { bracketSameLine: false }],
+    curly: 'off',
+    'no-fallthrough': ['error', { allowEmptyCase: true }],
   },
 };

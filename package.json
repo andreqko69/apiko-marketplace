@@ -17,7 +17,7 @@
     "ios:staging-release": "react-native run-ios --simulator='iPhone 8' --mode=Release --scheme \"ApikoMarketplaceStg\"",
     "ios:prod": "react-native run-ios --simulator='iPhone 8' --mode=Debug --scheme \"ApikoMarketplace\"",
     "ios:prod-release": "react-native run-ios --simulator='iPhone 8' --mode=Release --scheme \"ApikoMarketplace\"",
-    "supabase:generate-types": "supabase gen types typescript --local > database.types.ts",
+    "supabase:generate-types": "supabase gen types typescript --local > src/lib/supabase/database.types.ts",
     "ios:pod-install": "npx pod-install ios",
     "lint": "eslint .",
     "start": "react-native start --reset-cache",

@@ -19,11 +19,14 @@ import {
   ButtonVariation,
 } from '@components/ButtonPrimary/constants';
 import type { RootStackParamList } from '@navigation/RootNavigator/RootNavigator.types';
-import inputValidator from '@services/InputValidator';
+import inputValidator from '@utils/InputValidator';
 import { InputType } from '@components/InputText/constants';
+import { ModalName } from '@modals/constants';
+import { getTranslatedSupabaseErrorMessage } from '@lib/supabase/helpers';
+import supabase from '@lib/supabase';
+import { TranslationContext } from '@localization/constants';
 
 import stylesheet from './SignUpScreen.styles';
-import { TranslationContext } from '../../../../i18n/constants';
 
 type NavigationProps = CompositeScreenProps<
   StackScreenProps<AuthStackParamList, ScreenName.SignUp>,
@@ -125,15 +128,15 @@ const SignupScreen = () => {
 
   const validateConfirmPassword = useCallback(
     (value: string) => {
-      return inputValidator.validateLocation({
-        fieldName: t('confirmPassword'),
-        value,
-        translationParams: {
-          context: TranslationContext.Male,
-        },
-      });
+      return {
+        isValid: value === formState.password.value,
+        errorMessage:
+          value === formState.password.value
+            ? undefined
+            : t('errorMessages.passwordsDoNotMatch'),
+      };
     },
-    [t]
+    [t, formState.password.value]
   );
 
   const isSubmitDisabled = useMemo((): boolean => {
@@ -243,10 +246,40 @@ const SignupScreen = () => {
     navigate(ScreenName.SignIn);
   };
 
-  const handleSignUpPress = async () => {};
-
   const { firstName, lastName, email, location, password, confirmPassword } =
     formState;
+
+  const handleSignUpPress = useCallback(async () => {
+    const { error } = await supabase.auth.signUp({
+      email: email.value,
+      password: password.value,
+      options: {
+        data: {
+          display_name: `${firstName.value} ${lastName.value}`,
+          first_name: firstName.value,
+          last_name: lastName.value,
+        },
+      },
+    });
+
+    if (error) {
+      navigate(ModalName.MessageModal, {
+        title: t('errorMessages.oops'),
+        message: getTranslatedSupabaseErrorMessage(error.message),
+        primaryButtonText: t('ok'),
+        onPrimaryButtonPress: () => {
+          navigate(ScreenName.SignUp);
+        },
+      });
+    }
+  }, [
+    email.value,
+    firstName.value,
+    lastName.value,
+    navigate,
+    password.value,
+    t,
+  ]);
 
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
